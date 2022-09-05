@@ -1,0 +1,8 @@
+- Make the app responsive, including the alerts
+firebase 
+
+Technologies used:
+- JavaScript
+- TypeScript
+- Angular 13.1.3
+- Bootstrap 5

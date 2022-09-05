@@ -1,0 +1,52 @@
+.card-empty {
+    height: 60hv;
+    margin: 25px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h4, h6 {
+    font-weight: 400;
+}
+
+.center {
+    text-align: center;
+
+    img {
+        background-color: whitesmoke;
+        text-decoration: none;
+        color: inherit;
+        border: none;
+        outline: none;
+        height: 162px;
+        width: 250px;
+        margin: 20px 0px;
+    }
+}
+
+.card-table {
+    display: flex;
+    flex-direction: column;
+    min-width: none;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: .25rem;
+    width: fit-content;
+}
+
+.center .btn {
+    font-size: 14px !important;
+    margin-top: 20px !important;
+    font-weight: 400;
+    padding: 12px 72px;
+    border-radius: 3px !important;
+}
+
+/* Increment - Decrement input */
+#quantity {
+    width: 60px;
+}

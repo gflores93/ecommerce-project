@@ -1,0 +1,102 @@
+<ng-container *ngIf="products?.length">
+    <div class="container-fluid">
+        <div class="card-table">
+            <div class="cart-product">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <table class="table table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Product Name</th>
+                                    <th class="d-none d-sm-table-cell">Product Image</th>
+                                    <th class="d-none d-lg-table-cell">Description</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="cart-item" *ngFor="let item of products; let i = index">
+                                    <td>{{ item.id }}</td>
+                                    <td>{{ item.title }}</td>
+                                    <td class="d-none d-sm-table-cell"> <img style="width:120px;" src="{{ item.image }}"
+                                            alt="{{ item.title }}"> </td>
+                                    <td class="d-none d-lg-table-cell" style="max-width:25%;">{{ item.description }}
+                                    </td>
+                                    <td>{{ item.price }}</td>
+                                    <td>
+                                        <input type="number" id="quantity" (change)="updateQuantity($event, item)"
+                                            step="1" value="{{item.quantity}}" />
+                                    </td>
+                                    <td>{{ item.total }}</td>
+                                    <td>
+                                        <button class="btn btn-danger" (click)="removeItem(item)">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-12 mt-2 mb-3 ms-5">
+                        <div class="row justify-content-center">
+                            <div class="col-xs-12 col-8">
+                                <div class="btn-group" role="group" aria-label="button group">
+                                    <button (click)="emptyCart()" class="btn btn-danger">Empty
+                                        Cart</button>
+                                    <button routerLink="/products" class="btn btn-primary">Shop
+                                        More</button>
+                                    <button class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#checkoutModal">
+                                        Checkout
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-3 me-2 d-inline"><strong> Grand Total: ${{ grandTotal }} </strong></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="checkoutModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkoutModalLabel">Validate Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p *ngIf="!message?.length">The total of your order is: ${{ grandTotal }} </p>
+                    <h3>{{ message }}</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" #closeBtn class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" (click)="confirmOrder()">Pay & Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="!products?.length">
+    <div class="container">
+        <div class="card-empty">
+            <div class="center">
+                <h1 class="card-title">My Cart</h1>
+                <img src="https://www.nicepng.com/png/detail/443-4433547_ecommerce-shopping-cart-png-background-image-ecommerce-shopping.png"
+                    alt="shopping cart">
+                <h4>Your cart is empty!</h4>
+                <h6>Add item to it now</h6>
+                <button class="btn btn-dark" routerLink="/products">Shop Now</button>
+            </div>
+        </div>
+    </div>
+</ng-container>
