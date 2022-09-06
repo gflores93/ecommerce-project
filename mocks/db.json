@@ -1,0 +1,22 @@
+{
+  "signupUsers": [
+    {
+      "username": "user04",
+      "email": "04@hotmail.com",
+      "password": "1234",
+      "id": 2
+    },
+    {
+      "username": "one12",
+      "email": "8123@cx",
+      "password": "m81723y",
+      "id": 3
+    },
+    {
+      "username": "12312",
+      "email": "32@912",
+      "password": "me98123",
+      "id": 4
+    }
+  ]
+}
