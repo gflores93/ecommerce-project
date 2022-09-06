@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="col-md-6 offset-md-3 mt-4">
+    <h3>Register New User</h3>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="loginUsername" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="loginUsername"
+          placeholder="Enter username"
+          formControlName="username"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="registerEmail" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="registerEmail"
+          formControlName="email"
+        />
+      </div>
+      <div class="mb-1">
+        <label for="loginPassword" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="loginPassword"
+          formControlName="password"
+        />
+      </div>
+      <div class="mb-3 form-check" style="padding: 0">
+        <a routerLink="/login">Already registered? Click to login</a>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="registerForm.invalid"
+      >
+        Register <i class="fa fa-sign-in" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+</div>
