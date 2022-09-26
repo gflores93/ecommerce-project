@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { CartService } from 'src/app/service/cart.service';
-import { SearchService } from 'src/app/service/search.service';
+import { CartService } from 'src/app/main/services/cart.service';
+import { SearchService } from 'src/app/main/services/search.service';
 
 @Component({
   selector: 'app-header',
@@ -39,6 +39,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.cartService.removeAllCart();
     this.authService.logout();
   }
 }

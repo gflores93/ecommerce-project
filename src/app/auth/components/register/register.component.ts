@@ -6,7 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { Role } from 'src/app/shared/models/role';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private usersService: UsersService,
     private router: Router
   ) {}
 
@@ -34,7 +35,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.post(this.registerForm.value).subscribe({
+    const newUser = this.registerForm.value;
+    newUser.role = Role.User;
+    this.usersService.postUser(newUser).subscribe({
       next: (res: any) => {
         console.log('Signup successful', res);
         this.registerForm.reset();
