@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { CartService } from 'src/app/main/services/cart.service';
 import { SearchService } from 'src/app/main/services/search.service';
@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   public totalItem: number = 0;
   public searchText: string = '';
   public user: string = '';
+  @Input('searchBar') searchBar: boolean = false;
 
   constructor(
     private cartService: CartService,
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit {
     this.authService.userLogged.subscribe((user) => {
       this.user = user;
     });
+    this.searchService.searchText.subscribe((text) => (this.searchText = text));
   }
 
   search(event: any) {
@@ -39,6 +41,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.clearSearch();
     this.cartService.removeAllCart();
     this.authService.logout();
   }

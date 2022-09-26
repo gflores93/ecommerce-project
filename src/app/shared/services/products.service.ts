@@ -37,8 +37,10 @@ export class ProductsService {
   //   );
   // }
 
-  getProducts() {
-    return this.http.get<ProductInterface[]>(this.apiUrl);
+  getProducts(category: string = '') {
+    return this.http.get<ProductInterface[]>(
+      category.length ? this.apiUrl + '?category=' + category : this.apiUrl
+    );
   }
 
   postProduct(data: ProductInterface) {

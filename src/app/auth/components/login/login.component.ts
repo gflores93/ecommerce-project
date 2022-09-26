@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/shared/models/role';
 import { UserInterface } from 'src/app/shared/models/user.interface';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { AuthService } from '../../services/auth.service';
@@ -43,8 +44,12 @@ export class LoginComponent implements OnInit {
         if (user) {
           console.log('Login successful');
           this.loginForm.reset();
-          this.authService.login(user?.username);
-          this.router.navigate(['products']);
+          this.authService.login(user);
+          if (user.role === Role.Admin) {
+            this.router.navigate(['admin']);
+          } else {
+            this.router.navigate(['products']);
+          }
         } else {
           alert('User not found');
         }

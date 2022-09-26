@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminMenuComponent } from './admin-menu/admin-menu.component';
-import { AdminProductsComponent } from './admin-products/admin-products.component';
-import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminGuard } from '../auth/services/admin-guard.service';
+import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
+import { AdminProductsComponent } from './components/admin-products/admin-products.component';
+import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 
 const routes: Routes = [
-  { path: 'users', component: AdminUsersComponent },
-  { path: 'products', component: AdminProductsComponent },
+  { path: 'users', canActivate: [AdminGuard], component: AdminUsersComponent },
+  {
+    path: 'products',
+    canActivate: [AdminGuard],
+    component: AdminProductsComponent,
+  },
   {
     path: '',
+    canActivate: [AdminGuard],
     component: AdminMenuComponent,
   },
 ];

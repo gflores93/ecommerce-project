@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UserInterface } from 'src/app/shared/models/user.interface';
+import { Role } from 'src/app/shared/models/role';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +13,7 @@ export class AuthService {
   apiUrl: string = environment.usersUrl;
   loggedIn: boolean = false;
   userLogged: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  userRole: Role = Role.User;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -23,9 +26,10 @@ export class AuthService {
     return promise;
   }
 
-  login(user: any) {
+  login(user: UserInterface) {
     console.log('User logged in:', user);
-    this.userLogged.next(user);
+    this.userLogged.next(user.username);
+    this.userRole = user.role;
     this.loggedIn = true;
   }
 
@@ -33,6 +37,7 @@ export class AuthService {
     console.log('User logged out:');
     this.loggedIn = false;
     this.userLogged.next('');
+    this.userRole = Role.User;
     this.router.navigate(['login']);
   }
 }

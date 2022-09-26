@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { CartService } from 'src/app/main/services/cart.service';
 import { SearchService } from 'src/app/main/services/search.service';
 import { ProductInterface } from 'src/app/shared/models/product.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
   categories: Array<any> = [
     {
       name: 'All products',
@@ -41,35 +42,26 @@ export class ProductsComponent implements OnInit {
       category: 'electronics',
     },
   ];
-  public productList!: ProductInterface[];
-  public categoryList!: ProductInterface[];
+  public productsList!: ProductInterface[];
   public searchKey: string = '';
   public loading: boolean = true;
   // 1: inserted, 2: already inserted, 3: deleted
   public alert: any = {};
+  public productsSubscription: Subscription = new Subscription();
+
   constructor(
     private api: ProductsService,
     private cartService: CartService,
     private searchService: SearchService
   ) {}
 
+  ngOnDestroy(): void {
+    this.productsSubscription.unsubscribe();
+  }
+
   ngOnInit(): void {
     this.loading = true;
-    this.api.getProducts().subscribe({
-      next: (res) => {
-        this.productList = res;
-        this.categoryList = res;
-        this.productList.forEach((a: ProductInterface) => {
-          if (a.category.includes('clothing')) a.category = 'fashion';
-          // Object.assign(a, {quantity: 1, total: a.price}); //assign extra properties to each object
-          a.quantity = 1;
-          a.total = a.price;
-        });
-      },
-      complete: () => {
-        this.loading = false;
-      },
-    });
+    this.filterByCategory();
 
     // subscribe to the observable that is emmited from the header component
     this.searchService.searchText.subscribe((val: string) => {
@@ -86,9 +78,24 @@ export class ProductsComponent implements OnInit {
     this.alert = undefined;
   }
 
-  filterByCategory(category: string) {
-    this.categoryList = this.productList.filter(
-      (a: any) => a.category === category || category === ''
-    );
+  filterByCategory(category: string = '') {
+    // this.categoryList = this.productList.filter(
+    //   (a: any) => a.category === category || category === ''
+    // );
+
+    this.searchService.updateText('');
+    if (this.productsSubscription) this.productsSubscription.unsubscribe();
+    this.loading = true;
+    this.productsSubscription = this.api.getProducts(category).subscribe({
+      next: (res) => {
+        this.productsList = res;
+        this.productsList.forEach((a: ProductInterface) => {
+          Object.assign(a, { quantity: 1, total: a.price }); //assign extra properties to each object
+        });
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
   }
 }
