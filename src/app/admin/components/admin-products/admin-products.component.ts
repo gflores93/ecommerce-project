@@ -15,8 +15,8 @@ export class AdminProductsComponent implements OnInit {
   /* title, price, description, category */
   displayedColumns: string[] = [
     'title',
-    'description',
     'category',
+    'description',
     'price',
     'action',
   ];
@@ -28,7 +28,6 @@ export class AdminProductsComponent implements OnInit {
   constructor(private dialog: MatDialog, private api: AdminProductsService) {}
   ngOnInit(): void {
     this.getAllProducts();
-    console.log('On Init msg');
   }
 
   openDialog() {
@@ -47,7 +46,6 @@ export class AdminProductsComponent implements OnInit {
   getAllProducts() {
     this.api.getProducts().subscribe({
       next: (res) => {
-        console.log('response products:', res);
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

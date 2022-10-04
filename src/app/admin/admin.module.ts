@@ -7,6 +7,7 @@ import { AdminMenuComponent } from './components/admin-menu/admin-menu.component
 import { AngularMaterialModule } from '../angular-material.module';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminUsersComponent,
     AdminMenuComponent,
     DialogComponent,
+    UserDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -9,8 +9,6 @@ import { AdminProductsService } from '../../services/admin-products.service';
   styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent implements OnInit {
-  freshnessList = ['Brand New', 'Second Hand', 'Refurbished'];
-
   productForm!: FormGroup;
   actionBtn: string = 'Save';
 
