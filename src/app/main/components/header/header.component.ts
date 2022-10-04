@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { CartService } from 'src/app/main/services/cart.service';
 import { SearchService } from 'src/app/main/services/search.service';
@@ -8,7 +14,7 @@ import { SearchService } from 'src/app/main/services/search.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges {
   public totalItem: number = 0;
   public searchText: string = '';
   public user: string = '';
@@ -19,6 +25,9 @@ export class HeaderComponent implements OnInit {
     private searchService: SearchService,
     private authService: AuthService
   ) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('changes', changes);
+  }
 
   ngOnInit(): void {
     this.cartService.getProducts().subscribe((res) => {

@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   usersUrl: 'http://localhost:3000/users/',
   productsUrl: 'http://localhost:3000/products/',
+  productsList: 'http://localhost:3000/productsList/',
 };
 
 /*

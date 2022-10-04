@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { MainModule } from './main/main.module';
 import { AdminModule } from './admin/admin.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { AdminModule } from './admin/admin.module';
     AuthModule,
     MainModule,
     AdminModule,
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

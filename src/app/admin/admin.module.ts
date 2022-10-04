@@ -4,13 +4,23 @@ import { AdminProductsComponent } from './components/admin-products/admin-produc
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
+import { AngularMaterialModule } from '../angular-material.module';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AdminProductsComponent,
     AdminUsersComponent,
     AdminMenuComponent,
+    DialogComponent,
   ],
-  imports: [CommonModule, AdminRoutingModule],
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    AngularMaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
 export class AdminModule {}

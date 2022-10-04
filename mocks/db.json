@@ -69,20 +69,37 @@
       "password": "01234",
       "role": "User",
       "id": 11
+    },
+    {
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "12345",
+      "role": "User",
+      "id": 12
+    },
+    {
+      "username": "User04",
+      "email": "user04@gmail.com",
+      "password": "12345",
+      "role": "User",
+      "id": 13
+    },
+    {
+      "username": "user",
+      "email": "user@gmail.com",
+      "password": "u12345",
+      "role": "User",
+      "id": 14
     }
   ],
   "products": [
     {
-      "id": 1,
-      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-      "price": 109.95,
+      "title": "Modified product 2",
+      "category": "electronics",
+      "price": 999,
       "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "category": "fashion",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "rating": {
-        "rate": 3.9,
-        "count": 120
-      }
+      "id": 1
     },
     {
       "id": 2,
@@ -323,6 +340,68 @@
         "rate": 4.7,
         "count": 500
       }
+    },
+    {
+      "title": "New product",
+      "category": "jewelry",
+      "price": 432,
+      "description": "New product included with Admin UI",
+      "id": 22
+    },
+    {
+      "title": "Product 999",
+      "category": "fashion",
+      "price": 999,
+      "description": "New products",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "id": 23
+    }
+  ],
+  "productsList": [
+    {
+      "productName": "Prod2",
+      "category": "electronics",
+      "freshness": "Refurbished",
+      "price": 24,
+      "comment": "Refurbished product",
+      "date": "2022-02-03T23:00:00.000Z",
+      "id": 3
+    },
+    {
+      "productName": "Object 4",
+      "category": "electronics",
+      "freshness": "Refurbished",
+      "price": 491,
+      "comment": "Product number 4 modified",
+      "date": "2023-04-14T22:00:00.000Z",
+      "id": 4
+    },
+    {
+      "productName": "Elem X",
+      "category": "fashion",
+      "freshness": "Refurbished",
+      "price": 999,
+      "comment": "999 value",
+      "date": "2022-02-04T23:00:00.000Z",
+      "id": 5
+    },
+    {
+      "productName": "New product",
+      "category": "fashion",
+      "freshness": "Second Hand",
+      "price": 559,
+      "comment": "test",
+      "date": "2022-09-29T22:00:00.000Z",
+      "id": 7
+    },
+    {
+      "productName": "T-shit 004",
+      "category": "fashion",
+      "freshness": "Brand New",
+      "price": 50,
+      "comment": "New t-shirt",
+      "date": "2022-09-15T22:00:00.000Z",
+      "id": 8
     }
   ]
 }

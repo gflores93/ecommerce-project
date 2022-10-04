@@ -1,4 +1,4 @@
-<app-header [searchBar]="true"></app-header>
+<app-header [searchBar]="(productsList || null).length > 5"></app-header>
 <div class="card-top container-fluid">
   <div class="d-none d-lg-flex">
     <div class="item mt-2" *ngFor="let category of categories">

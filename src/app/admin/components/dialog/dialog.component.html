@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Add product form</h1>
+<div mat-dialog-content>
+  <form [formGroup]="productForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Product Name</mat-label>
+      <input formControlName="title" matInput placeholder="Name" />
+    </mat-form-field>
+    <div
+      *ngIf="productForm.hasError('required', 'title') && productForm?.touched"
+      class="alert alert-danger"
+    >
+      Title is required.
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Product Category</mat-label>
+      <mat-select formControlName="category" placeholder="Category">
+        <mat-option value="fashion">Fashion</mat-option>
+        <mat-option value="jewelry">Jewelry</mat-option>
+        <mat-option value="electronics">Electronics</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <input
+        formControlName="price"
+        matInput
+        type="number"
+        placeholder="Price"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea formControlName="description" matInput></textarea>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button
+    style="margin-left: 8px"
+    mat-raised-button
+    color="secondary"
+    (click)="addProduct()"
+    [disabled]="productForm.invalid"
+  >
+    {{ actionBtn }}
+  </button>
+</div>

@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           if (user.role === Role.Admin) {
             this.router.navigate(['admin']);
           } else {
-            this.router.navigate(['products']);
+            this.router.navigate(['main/products']);
           }
         } else {
           alert('User not found');
