@@ -11,11 +11,11 @@ const routes: Routes = [
     component: ProductsComponent,
   },
   { path: 'cart', canActivate: [MainGuard], component: CartComponent },
-  // {
-  //   path: '',
-  //   redirectTo: 'cart',
-  //   pathMatch: 'full',
-  // },
+  {
+    path: '',
+    redirectTo: 'products',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

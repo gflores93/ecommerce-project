@@ -20,6 +20,14 @@ export class AuthService {
   isAuthenticated() {
     const promise = new Promise<boolean>((resolve, reject) => {
       setTimeout(() => {
+        const userLogged = JSON.parse(
+          localStorage.getItem('currentUser') || '{}'
+        );
+        if (userLogged?.username && !this.loggedIn) {
+          this.userLogged.next(userLogged.username);
+          this.userRole = userLogged.role;
+          this.loggedIn = true;
+        }
         resolve(this.loggedIn);
       }, 800);
     });
@@ -27,6 +35,7 @@ export class AuthService {
   }
 
   login(user: UserInterface) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
     console.log('User logged in:', user);
     this.userLogged.next(user.username);
     this.userRole = user.role;
@@ -34,6 +43,7 @@ export class AuthService {
   }
 
   logout() {
+    localStorage.removeItem('currentUser');
     console.log('User logged out:');
     this.loggedIn = false;
     this.userLogged.next('');

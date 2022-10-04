@@ -21,7 +21,7 @@ export class MainGuard implements CanActivate {
         return true;
       } else {
         console.log('re-routed by guard');
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
         return false;
       }
     });

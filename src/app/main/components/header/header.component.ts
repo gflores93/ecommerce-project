@@ -8,16 +8,18 @@ import {
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { CartService } from 'src/app/main/services/cart.service';
 import { SearchService } from 'src/app/main/services/search.service';
+import { Role } from 'src/app/shared/models/role';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, OnChanges {
+export class HeaderComponent implements OnInit {
   public totalItem: number = 0;
   public searchText: string = '';
   public user: string = '';
+  public adminUser: boolean = false;
   @Input('searchBar') searchBar: boolean = false;
 
   constructor(
@@ -25,9 +27,10 @@ export class HeaderComponent implements OnInit, OnChanges {
     private searchService: SearchService,
     private authService: AuthService
   ) {}
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes', changes);
-  }
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   console.log('changes', changes);
+  // }
 
   ngOnInit(): void {
     this.cartService.getProducts().subscribe((res) => {
@@ -37,6 +40,7 @@ export class HeaderComponent implements OnInit, OnChanges {
       this.user = user;
     });
     this.searchService.searchText.subscribe((text) => (this.searchText = text));
+    this.adminUser = this.authService.userRole === Role.Admin;
   }
 
   search(event: any) {
