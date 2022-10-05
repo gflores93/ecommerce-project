@@ -1,4 +1,62 @@
-<p>admin-menu works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 sidebar">
+      <div
+        class="d-flex flex-column flex-shrink-0 p-3 fs-5 bg-light"
+        style="width: 200px"
+      >
+        <a
+          [routerLink]="'/admin'"
+          class="d-flex mb-3 mb-md-0 me-md-auto text-decoration-none"
+        >
+          <div>
+            <i class="bi bi-person-workspace"></i>
+            {{ user }}
+          </div>
+        </a>
 
-<button [routerLink]="'users'">Admin Users</button>
-<button [routerLink]="'products'">Admin Products</button>
+        <hr />
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a
+              [routerLink]="'/admin'"
+              class="nav-link"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <i class="bi bi-house"></i>
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              [routerLink]="'users'"
+              class="nav-link"
+              routerLinkActive="active"
+            >
+              <i class="bi bi-people"></i>
+              Users
+            </a>
+          </li>
+          <li>
+            <a
+              [routerLink]="'products'"
+              class="nav-link"
+              routerLinkActive="active"
+            >
+              <i class="bi bi-shop"></i>
+              Products
+            </a>
+          </li>
+        </ul>
+        <hr />
+        <div>
+          <a class="fs-6 nav-link" (click)="logout()"> Log out </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-10 ms-auto">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

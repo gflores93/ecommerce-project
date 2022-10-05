@@ -6,16 +6,22 @@ import { AdminProductsComponent } from './components/admin-products/admin-produc
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 
 const routes: Routes = [
-  { path: 'users', canActivate: [AdminGuard], component: AdminUsersComponent },
-  {
-    path: 'products',
-    canActivate: [AdminGuard],
-    component: AdminProductsComponent,
-  },
   {
     path: '',
     canActivate: [AdminGuard],
     component: AdminMenuComponent,
+    children: [
+      {
+        path: 'users',
+        canActivate: [AdminGuard],
+        component: AdminUsersComponent,
+      },
+      {
+        path: 'products',
+        canActivate: [AdminGuard],
+        component: AdminProductsComponent,
+      },
+    ],
   },
 ];
 

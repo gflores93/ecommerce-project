@@ -1,0 +1,24 @@
+* {
+  color: black;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar {
+  height: 100%;
+}
+
+a.i {
+  width: 16px;
+  height: 16px;
+}
+
+.active {
+  background-color: black !important;
+  i {
+    color: white;
+  }
+}

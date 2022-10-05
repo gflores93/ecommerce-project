@@ -40,6 +40,11 @@ export class AuthService {
     this.userLogged.next(user.username);
     this.userRole = user.role;
     this.loggedIn = true;
+    if (user.role === Role.Admin) {
+      this.router.navigate(['admin']);
+    } else {
+      this.router.navigate(['main/products']);
+    }
   }
 
   logout() {

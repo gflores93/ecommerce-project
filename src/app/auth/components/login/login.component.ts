@@ -42,14 +42,9 @@ export class LoginComponent implements OnInit {
             a.password === this.loginForm.value.password
         );
         if (user) {
-          console.log('Login successful');
           this.loginForm.reset();
           this.authService.login(user);
-          if (user.role === Role.Admin) {
-            this.router.navigate(['admin']);
-          } else {
-            this.router.navigate(['main/products']);
-          }
+          console.log('Login successful');
         } else {
           alert('User not found');
         }
