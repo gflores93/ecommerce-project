@@ -3,21 +3,21 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { AdminProductsService } from '../../services/admin-products.service';
-import { DialogComponent } from '../dialog/dialog.component';
+import { AdminUsersService } from '../../../services/admin-users.service';
+import { UserDialogComponent } from '../user-dialog/user-dialog.component';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './admin-products.component.html',
-  styleUrls: ['./admin-products.component.scss'],
+  selector: 'app-users',
+  templateUrl: './admin-users.component.html',
+  styleUrls: ['./admin-users.component.scss'],
 })
-export class AdminProductsComponent implements OnInit {
-  /* title, price, description, category */
+export class AdminUsersComponent implements OnInit {
+  /* username, email, password, role */
   displayedColumns: string[] = [
-    'title',
-    'category',
-    'description',
-    'price',
+    'username',
+    'role',
+    'email',
+    'password',
     'action',
   ];
   dataSource!: MatTableDataSource<any>;
@@ -25,28 +25,32 @@ export class AdminProductsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog: MatDialog, private api: AdminProductsService) {}
+  hiddenPassword: string = '***************';
+
+  constructor(private dialog: MatDialog, private api: AdminUsersService) {}
   ngOnInit(): void {
-    this.getAllProducts();
+    this.getAllUsers();
   }
 
   openDialog() {
     this.dialog
-      .open(DialogComponent, {
+      .open(UserDialogComponent, {
         width: '30%',
       })
       .afterClosed()
       .subscribe((val) => {
         if (val === 'save') {
-          this.getAllProducts();
+          this.getAllUsers();
         }
       });
   }
 
-  getAllProducts() {
-    this.api.getProducts().subscribe({
+  getAllUsers() {
+    this.api.getUsers().subscribe({
       next: (res) => {
-        this.dataSource = new MatTableDataSource(res);
+        const users: any = [...res];
+        users.map((u: any) => (u.visible = false));
+        this.dataSource = new MatTableDataSource(users);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
@@ -56,30 +60,34 @@ export class AdminProductsComponent implements OnInit {
     });
   }
 
-  editProduct(row: any) {
+  editUser(row: any) {
     this.dialog
-      .open(DialogComponent, {
+      .open(UserDialogComponent, {
         width: '30%',
         data: row,
       })
       .afterClosed()
       .subscribe((val) => {
         if (val === 'update') {
-          this.getAllProducts();
+          this.getAllUsers();
         }
       });
   }
 
-  deleteProduct(id: number) {
-    this.api.deleteProduct(id).subscribe({
+  deleteUser(id: number) {
+    this.api.deleteUser(id).subscribe({
       next: (res) => {
-        alert('Product was deleted sucessfully');
-        this.getAllProducts();
+        alert('User was deleted sucessfully');
+        this.getAllUsers();
       },
       error: (err) => {
-        alert('Error while deleting product');
+        alert('Error while deleting user');
       },
     });
+  }
+
+  togglePass(row: any) {
+    row.visible = !row.visible;
   }
 
   applyFilter(event: Event) {

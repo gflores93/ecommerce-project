@@ -1,25 +1,35 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AdminProductsService } from '../../services/admin-products.service';
+import { CategoryInterface } from 'src/app/shared/models/category.interface';
+import { CategoriesService } from 'src/app/shared/services/categories.service';
+import { AdminProductsService } from '../../../services/admin-products.service';
 
 @Component({
   selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss'],
+  templateUrl: './product-dialog.component.html',
+  styleUrls: ['./product-dialog.component.scss'],
 })
-export class DialogComponent implements OnInit {
+export class ProductDialogComponent implements OnInit {
   productForm!: FormGroup;
   actionBtn: string = 'Save';
+  categories: CategoryInterface[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private api: AdminProductsService,
-    private dialogRef: MatDialogRef<DialogComponent>,
+    private categoriesService: CategoriesService,
+    private dialogRef: MatDialogRef<ProductDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public editData: any
   ) {}
 
   ngOnInit(): void {
+    this.categoriesService
+      .getCategories()
+      .subscribe((categories: CategoryInterface[]) => {
+        this.categories = categories;
+      });
+
     /*  title, price, description, category   */
     this.productForm = this.formBuilder.group({
       title: ['', Validators.required],

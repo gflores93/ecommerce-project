@@ -2,7 +2,7 @@
 <div class="card-top container-fluid">
   <div class="d-none d-lg-flex">
     <div class="item mt-2" *ngFor="let category of categories">
-      <a (click)="filterByCategory(category.category)">
+      <a (click)="filterByCategory(category.id)">
         <img src="{{ category.imgUrl }}" alt="{{ category.description }}" />
         <h6>{{ category.name }}</h6>
       </a>

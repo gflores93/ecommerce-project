@@ -4,7 +4,7 @@
       "username": "user04",
       "email": "04@hotmail.com",
       "password": "12345",
-      "role": "Test",
+      "role": "Admin",
       "id": 2
     },
     {
@@ -89,7 +89,7 @@
     {
       "title": "Modified product 2",
       "category": "electronics",
-      "price": 999,
+      "price": 991.5,
       "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
       "id": 1
@@ -335,6 +335,7 @@
       "category": "jewelry",
       "price": 432,
       "description": "New product included with Admin UI",
+      "image": "https://images.pexels.com/photos/2783873/pexels-photo-2783873.jpeg?auto=compress&cs=tinysrgb&w=400",
       "id": 22
     },
     {
@@ -352,53 +353,51 @@
       "description": "Test description",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
       "id": 24
+    },
+    {
+      "title": "Sofa 923N",
+      "category": "furniture",
+      "price": 1608.99,
+      "description": "New sofa ",
+      "image": "https://images.pexels.com/photos/133919/pexels-photo-133919.jpeg?auto=compress&cs=tinysrgb&w=400",
+      "id": 25
     }
   ],
-  "productsList": [
+  "categories": [
     {
-      "productName": "Prod2",
-      "category": "electronics",
-      "freshness": "Refurbished",
-      "price": 24,
-      "comment": "Refurbished product",
-      "date": "2022-02-03T23:00:00.000Z",
+      "name": "All products",
+      "description": "",
+      "imgUrl": "https://images.pexels.com/photos/1517355/pexels-photo-1517355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "category": "",
+      "id": 1
+    },
+    {
+      "name": "Fashion",
+      "description": "Helmets, Shoulder pads, Faceguards",
+      "imgUrl": "https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "category": "fashion",
+      "id": 2
+    },
+    {
+      "name": "Jewelry",
+      "description": "Protective gear, Jaw Pads, Mouseguards Back Plates, Visors, Pads, Bags,",
+      "imgUrl": "https://images.pexels.com/photos/10475792/pexels-photo-10475792.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "category": "jewelery",
       "id": 3
     },
     {
-      "productName": "Object 4",
+      "name": "Electronics",
+      "description": "Jerseys, Pants, Cleats, Gloves, Vests, Belts",
+      "imgUrl": "https://images.pexels.com/photos/8346914/pexels-photo-8346914.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "category": "electronics",
-      "freshness": "Refurbished",
-      "price": 491,
-      "comment": "Product number 4 modified",
-      "date": "2023-04-14T22:00:00.000Z",
       "id": 4
     },
     {
-      "productName": "Elem X",
-      "category": "fashion",
-      "freshness": "Refurbished",
-      "price": 999,
-      "comment": "999 value",
-      "date": "2022-02-04T23:00:00.000Z",
+      "name": "Furniture",
+      "description": "Beds, Chairs and Seating, Desks, Tables, Cabinets",
+      "imgUrl": "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "category": "furniture",
       "id": 5
-    },
-    {
-      "productName": "New product",
-      "category": "fashion",
-      "freshness": "Second Hand",
-      "price": 559,
-      "comment": "test",
-      "date": "2022-09-29T22:00:00.000Z",
-      "id": 7
-    },
-    {
-      "productName": "T-shit 004",
-      "category": "fashion",
-      "freshness": "Brand New",
-      "price": 50,
-      "comment": "New t-shirt",
-      "date": "2022-09-15T22:00:00.000Z",
-      "id": 8
     }
   ]
 }

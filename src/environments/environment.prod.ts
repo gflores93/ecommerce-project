@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
   usersUrl: 'http://localhost:3000/users/',
-  prodUrl: 'http://localhost:3000/products/',
-  productsList: 'http://localhost:3000/productsList/',
+  productsUrl: 'http://localhost:3000/products/',
+  categoriesUrl: 'http://localhost:3000/categories/',
 };

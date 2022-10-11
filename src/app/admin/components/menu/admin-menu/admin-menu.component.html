@@ -6,7 +6,7 @@
         style="width: 200px"
       >
         <a
-          [routerLink]="'/admin'"
+          [routerLink]="'dashboard'"
           class="d-flex mb-3 mb-md-0 me-md-auto text-decoration-none"
         >
           <div>
@@ -19,7 +19,7 @@
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
             <a
-              [routerLink]="'/admin'"
+              [routerLink]="'dashboard'"
               class="nav-link"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
@@ -51,7 +51,9 @@
         </ul>
         <hr />
         <div>
-          <a class="fs-6 nav-link" (click)="logout()"> Log out </a>
+          <a class="fs-6 nav-link" style="cursor: pointer" (click)="logout()">
+            Log out
+          </a>
         </div>
       </div>
     </div>

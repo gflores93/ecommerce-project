@@ -56,7 +56,7 @@
             *matCellDef="let row"
             [ngClass]="{ hidetext: !row.visible }"
           >
-            {{ row.password }}
+            {{ row.visible ? row.password : hiddenPassword }}
           </td>
         </ng-container>
 

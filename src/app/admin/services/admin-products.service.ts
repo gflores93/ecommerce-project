@@ -9,7 +9,6 @@ import { environment } from 'src/environments/environment';
 })
 export class AdminProductsService {
   // apiUrl: string = 'https://fakestoreapi.com/products';
-  // apiUrl: string = environment.productsList; // copied from the fake api
   apiUrl: string = environment.productsUrl;
 
   constructor(private http: HttpClient) {}

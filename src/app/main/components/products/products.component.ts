@@ -4,6 +4,8 @@ import { CartService } from 'src/app/main/services/cart.service';
 import { SearchService } from 'src/app/main/services/search.service';
 import { ProductInterface } from 'src/app/shared/models/product.interface';
 import { Subscription } from 'rxjs';
+import { CategoriesService } from 'src/app/shared/services/categories.service';
+import { CategoryInterface } from 'src/app/shared/models/category.interface';
 
 @Component({
   selector: 'app-products',
@@ -11,37 +13,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit, OnDestroy {
-  categories: Array<any> = [
-    {
-      name: 'All products',
-      description: '',
-      imgUrl:
-        'https://images.pexels.com/photos/1517355/pexels-photo-1517355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      category: '',
-    },
-    {
-      name: 'Fashion',
-      description: 'Helmets, Shoulder pads, Faceguards',
-      imgUrl:
-        'https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      category: 'fashion',
-    },
-    {
-      name: 'Jewelry',
-      description:
-        'Protective gear, Jaw Pads, Mouseguards Back Plates, Visors, Pads, Bags,',
-      imgUrl:
-        'https://images.pexels.com/photos/10475792/pexels-photo-10475792.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      category: 'jewelery',
-    },
-    {
-      name: 'Electronics',
-      description: 'Jerseys, Pants, Cleats, Gloves, Vests, Belts',
-      imgUrl:
-        'https://images.pexels.com/photos/8346914/pexels-photo-8346914.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      category: 'electronics',
-    },
-  ];
+  categories: Array<any> = [];
   public productsList!: ProductInterface[];
   public searchKey: string = '';
   public loading: boolean = true;
@@ -52,7 +24,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   constructor(
     private api: ProductsService,
     private cartService: CartService,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private categoriesService: CategoriesService
   ) {}
 
   ngOnDestroy(): void {
@@ -60,8 +33,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.filterByCategory();
+    this.categoriesService
+      .getCategories()
+      .subscribe((categories: CategoryInterface[]) => {
+        this.categories = categories;
+        this.filterByCategory();
+      });
 
     // subscribe to the observable that is emmited from the header component
     this.searchService.searchText.subscribe((val: string) => {
@@ -78,20 +55,26 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.alert = undefined;
   }
 
-  filterByCategory(category: string = '') {
+  filterByCategory(id: number = 1) {
     // this.categoryList = this.productList.filter(
     //   (a: any) => a.category === category || category === ''
     // );
 
+    const category = this.categories.find((a) => a.id === id).category || '';
+    console.log('id category', id, category);
     this.searchService.updateText('');
     if (this.productsSubscription) this.productsSubscription.unsubscribe();
     this.loading = true;
     this.productsSubscription = this.api.getProducts(category).subscribe({
       next: (res) => {
-        this.productsList = res;
-        this.productsList.forEach((a: ProductInterface) => {
-          Object.assign(a, { quantity: 1, total: a.price }); //assign extra properties to each object
-        });
+        if (res.length) {
+          this.productsList = res;
+          this.productsList.forEach((a: ProductInterface) => {
+            Object.assign(a, { quantity: 1, total: a.price }); //assign extra properties to each object
+          });
+        } else {
+          alert('There are no products of this category');
+        }
       },
       complete: () => {
         this.loading = false;

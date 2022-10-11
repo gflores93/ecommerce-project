@@ -15,9 +15,11 @@
     <mat-form-field appearance="outline">
       <mat-label>Product Category</mat-label>
       <mat-select formControlName="category" placeholder="Category">
-        <mat-option value="fashion">Fashion</mat-option>
-        <mat-option value="jewelry">Jewelry</mat-option>
-        <mat-option value="electronics">Electronics</mat-option>
+        <mat-option
+          *ngFor="let category of categories"
+          value="{{ category.category }}"
+          >{{ category.name }}</mat-option
+        >
       </mat-select>
     </mat-form-field>
 
