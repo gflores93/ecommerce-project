@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getAllUsers();
     this.getAllProducts();
   }
 
@@ -27,7 +28,6 @@ export class DashboardComponent implements OnInit {
     this.usersService.getUsers().subscribe({
       next: (res: UserInterface[]) => {
         this.users = res;
-        console.log(res);
       },
       error: (err) => {
         alert('Error while fetching the users!');
@@ -39,7 +39,6 @@ export class DashboardComponent implements OnInit {
     this.productsService.getProducts().subscribe({
       next: (res: ProductInterface[]) => {
         this.products = res;
-        console.log(res);
       },
       error: (err) => {
         alert('Error while fetching the products!');

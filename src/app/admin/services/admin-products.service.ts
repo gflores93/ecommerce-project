@@ -28,4 +28,26 @@ export class AdminProductsService {
   deleteProduct(id: number) {
     return this.http.delete<any>(this.apiUrl + id);
   }
+
+  // /posts?_page=7&_limit=20
+  // /posts?_sort=views&_order=asc
+  // /posts?title_like=server
+
+  getPaginatedProducts(
+    currentPage: number = 1,
+    pageSize: number = 5,
+    header: string = 'id',
+    direction: string = 'asc',
+    filterText: string = ''
+  ) {
+    const filter = filterText.length ? '&title_like=' + filterText : '';
+    // {observe: 'response'} as argument helps to provide extra info as res.headers('X-Total-Count')
+    return this.http.get<ProductInterface[]>(
+      this.apiUrl +
+        `?_page=${currentPage}&_limit=${pageSize}&_sort=${header}&_order=${direction}${filter}`,
+      {
+        observe: 'response',
+      }
+    );
+  }
 }

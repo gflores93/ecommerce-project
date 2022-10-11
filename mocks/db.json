@@ -339,28 +339,20 @@
       "id": 22
     },
     {
-      "title": "Product 999",
-      "category": "fashion",
-      "price": 999,
-      "description": "New products",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "id": 23
-    },
-    {
-      "title": "TestProduct00001",
-      "category": "electronics",
-      "price": 231.24,
-      "description": "Test description",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "id": 24
-    },
-    {
       "title": "Sofa 923N",
       "category": "furniture",
       "price": 1608.99,
       "description": "New sofa ",
       "image": "https://images.pexels.com/photos/133919/pexels-photo-133919.jpeg?auto=compress&cs=tinysrgb&w=400",
       "id": 25
+    },
+    {
+      "title": "Desktop 092",
+      "category": "furniture",
+      "price": 279.4,
+      "description": "Brand new desktop",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "id": 26
     }
   ],
   "categories": [
