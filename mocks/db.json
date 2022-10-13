@@ -83,6 +83,13 @@
       "password": "m98123",
       "role": "User",
       "id": 16
+    },
+    {
+      "username": "User13",
+      "email": "U13w@tmb.com",
+      "password": "u1234x",
+      "role": "User",
+      "id": 17
     }
   ],
   "products": [

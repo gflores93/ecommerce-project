@@ -20,14 +20,23 @@
       <mat-label>Filter</mat-label>
       <input
         matInput
-        (keyup)="applyFilter($event)"
-        placeholder="Ex. user01"
+        (keyup.enter)="applyFilter($event)"
+        placeholder="Ex. user"
         #input
       />
     </mat-form-field>
 
     <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource" matSort>
+      <mat-progress-bar
+        mode="indeterminate"
+        *ngIf="isLoading"
+      ></mat-progress-bar>
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="sortData($event)"
+      >
         <!-- Username -->
         <ng-container matColumnDef="username">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
@@ -50,7 +59,7 @@
 
         <!-- Password -->
         <ng-container matColumnDef="password">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Password</th>
+          <th mat-header-cell *matHeaderCellDef>Password</th>
           <td
             mat-cell
             *matCellDef="let row"
@@ -62,11 +71,11 @@
 
         <!-- Action -->
         <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+          <th mat-header-cell *matHeaderCellDef>Action</th>
           <td mat-cell *matCellDef="let row">
             <button mat-icon-button (click)="togglePass(row)">
               <mat-icon>{{
-                row.visible ? "visibility" : "visibility_off"
+                row.visible ? 'visibility' : 'visibility_off'
               }}</mat-icon>
             </button>
             <button mat-icon-button color="secondary" (click)="editUser(row)">
@@ -83,16 +92,16 @@
 
         <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">
-            No data matching the filter "{{ input.value }}"
-          </td>
+          <td class="mat-cell" colspan="4">No data matching the filter</td>
         </tr>
       </table>
 
       <mat-paginator
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        aria-label="Select page of users"
-      ></mat-paginator>
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="pageChanged($event)"
+        aria-label="Select page"
+      >
+      </mat-paginator>
     </div>
   </div>
 </div>

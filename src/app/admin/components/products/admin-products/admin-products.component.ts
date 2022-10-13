@@ -10,7 +10,7 @@ import { ProductDialogComponent } from '../product-dialog/product-dialog.compone
 @Component({
   selector: 'app-products',
   templateUrl: './admin-products.component.html',
-  styleUrls: ['./admin-products.component.scss'],
+  styleUrls: ['./admin-products.component.scss']
 })
 export class AdminProductsComponent implements OnInit, AfterViewInit {
   isLoading = false;
@@ -29,7 +29,7 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
     'category',
     'description',
     'price',
-    'action',
+    'action'
   ];
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
 
@@ -60,7 +60,7 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
   openDialog() {
     this.dialog
       .open(ProductDialogComponent, {
-        width: '30%',
+        width: '30%'
       })
       .afterClosed()
       .subscribe((val) => {
@@ -92,7 +92,7 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
         error: (err) => {
           alert('Error while fetching the records!');
           this.isLoading = false;
-        },
+        }
       });
   }
 
@@ -100,7 +100,7 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
     this.dialog
       .open(ProductDialogComponent, {
         width: '30%',
-        data: row,
+        data: row
       })
       .afterClosed()
       .subscribe((val) => {
@@ -118,7 +118,7 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
       },
       error: (err) => {
         alert('Error while deleting product');
-      },
+      }
     });
   }
 
@@ -139,7 +139,6 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
   }
 
   sortData(sort: Sort) {
-    console.log(sort);
     this.header = sort.active;
     this.direction = sort.direction;
     this.getAllProducts();
