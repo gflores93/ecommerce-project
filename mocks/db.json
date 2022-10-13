@@ -87,12 +87,13 @@
   ],
   "products": [
     {
-      "title": "Modified product 2",
-      "category": "electronics",
+      "title": "Producto 12345",
+      "category": "prueba",
       "price": 991.5,
       "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "id": 1
+      "id": 1,
+      "categoryId": 1
     },
     {
       "id": 2,
@@ -104,7 +105,8 @@
       "rating": {
         "rate": 4.1,
         "count": 259
-      }
+      },
+      "categoryId": 1
     },
     {
       "id": 3,
@@ -116,7 +118,8 @@
       "rating": {
         "rate": 4.7,
         "count": 500
-      }
+      },
+      "categoryId": 2
     },
     {
       "id": 4,
@@ -128,7 +131,8 @@
       "rating": {
         "rate": 2.1,
         "count": 430
-      }
+      },
+      "categoryId": 5
     },
     {
       "title": "Someproduct09",
@@ -136,7 +140,8 @@
       "price": 695,
       "description": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "id": 5
+      "id": 5,
+      "categoryId": 4
     },
     {
       "id": 6,
@@ -148,7 +153,8 @@
       "rating": {
         "rate": 3.9,
         "count": 70
-      }
+      },
+      "categoryId": 4
     },
     {
       "id": 7,
@@ -160,7 +166,8 @@
       "rating": {
         "rate": 3,
         "count": 400
-      }
+      },
+      "categoryId": 1
     },
     {
       "id": 8,
@@ -172,7 +179,8 @@
       "rating": {
         "rate": 1.9,
         "count": 100
-      }
+      },
+      "categoryId": 3
     },
     {
       "id": 9,
@@ -184,7 +192,8 @@
       "rating": {
         "rate": 3.3,
         "count": 203
-      }
+      },
+      "categoryId": 3
     },
     {
       "id": 10,
@@ -196,7 +205,8 @@
       "rating": {
         "rate": 2.9,
         "count": 470
-      }
+      },
+      "categoryId": 1
     },
     {
       "id": 11,
@@ -208,7 +218,8 @@
       "rating": {
         "rate": 4.8,
         "count": 319
-      }
+      },
+      "categoryId": 1
     },
     {
       "id": 12,
@@ -220,7 +231,8 @@
       "rating": {
         "rate": 4.8,
         "count": 400
-      }
+      },
+      "categoryId": 1
     },
     {
       "id": 13,
@@ -232,7 +244,8 @@
       "rating": {
         "rate": 2.9,
         "count": 250
-      }
+      },
+      "categoryId": 1
     },
     {
       "id": 14,
@@ -244,7 +257,8 @@
       "rating": {
         "rate": 2.2,
         "count": 140
-      }
+      },
+      "categoryId": 1
     },
     {
       "id": 15,
@@ -256,7 +270,8 @@
       "rating": {
         "rate": 2.6,
         "count": 235
-      }
+      },
+      "categoryId": 1
     },
     {
       "id": 16,
@@ -268,7 +283,8 @@
       "rating": {
         "rate": 2.9,
         "count": 340
-      }
+      },
+      "categoryId": 3
     },
     {
       "id": 17,
@@ -280,7 +296,8 @@
       "rating": {
         "rate": 3.8,
         "count": 679
-      }
+      },
+      "categoryId": 1
     },
     {
       "id": 18,
@@ -292,7 +309,8 @@
       "rating": {
         "rate": 4.7,
         "count": 130
-      }
+      },
+      "categoryId": 1
     },
     {
       "id": 19,
@@ -304,7 +322,8 @@
       "rating": {
         "rate": 4.5,
         "count": 146
-      }
+      },
+      "categoryId": 1
     },
     {
       "id": 20,
@@ -316,7 +335,8 @@
       "rating": {
         "rate": 3.6,
         "count": 145
-      }
+      },
+      "categoryId": 2
     },
     {
       "id": 21,
@@ -328,15 +348,8 @@
       "rating": {
         "rate": 4.7,
         "count": 500
-      }
-    },
-    {
-      "title": "New product",
-      "category": "jewelry",
-      "price": 432,
-      "description": "New product included with Admin UI",
-      "image": "https://images.pexels.com/photos/2783873/pexels-photo-2783873.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "id": 22
+      },
+      "categoryId": 1
     },
     {
       "title": "Sofa 923N",
@@ -344,7 +357,8 @@
       "price": 1608.99,
       "description": "New sofa ",
       "image": "https://images.pexels.com/photos/133919/pexels-photo-133919.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "id": 25
+      "id": 25,
+      "categoryId": 6
     },
     {
       "title": "Desktop 092",
@@ -352,7 +366,8 @@
       "price": 279.4,
       "description": "Brand new desktop",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "id": 26
+      "id": 26,
+      "categoryId": 6
     }
   ],
   "categories": [
@@ -390,6 +405,13 @@
       "imgUrl": "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "category": "furniture",
       "id": 5
+    },
+    {
+      "name": "Prueba",
+      "description": "Categoria de prueba",
+      "imgUrl": "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "category": "prueba",
+      "id": 6
     }
   ]
 }

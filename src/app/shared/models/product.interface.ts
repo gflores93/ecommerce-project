@@ -8,4 +8,5 @@ export interface ProductInterface {
   rating: any;
   title: string;
   total: number;
+  categoryId: number;
 }

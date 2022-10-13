@@ -7,7 +7,7 @@ import { CategoryInterface } from '../models/category.interface';
   providedIn: 'root',
 })
 export class CategoriesService {
-  apiUrl: string = environment.categoriesUrl; // copied from the fake api
+  apiUrl: string = environment.categoriesUrl;
 
   constructor(private http: HttpClient) {}
 

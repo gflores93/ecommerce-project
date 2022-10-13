@@ -44,6 +44,7 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
    */
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.sort.disableClear = true;
     this.dataSource.sort = this.sort;
   }
 
@@ -126,9 +127,9 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
     // this.dataSource.filter = filterValue.trim().toLowerCase();
     this.filterText = filterValue.trim().toLowerCase();
     this.getAllProducts();
-    // if (this.dataSource.paginator) {
-    //   this.dataSource.paginator.firstPage();
-    // }
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   pageChanged(event: PageEvent) {
@@ -139,7 +140,6 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
 
   sortData(sort: Sort) {
     console.log(sort);
-    if (!sort.direction) return;
     this.header = sort.active;
     this.direction = sort.direction;
     this.getAllProducts();
