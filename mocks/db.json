@@ -4,7 +4,7 @@
       "username": "user04",
       "email": "04@hotmail.com",
       "password": "12345",
-      "role": "Admin",
+      "role": "Test",
       "id": 2
     },
     {
@@ -17,8 +17,8 @@
     {
       "username": "Usr09",
       "email": "09.1@gmail.com",
-      "password": "12345m",
-      "role": "Test",
+      "password": "123456",
+      "role": "User",
       "id": 5
     },
     {
@@ -90,6 +90,13 @@
       "password": "u1234x",
       "role": "User",
       "id": 17
+    },
+    {
+      "username": "MrUsr09",
+      "email": "M9812@usr.com",
+      "password": "m981237d",
+      "role": "Test",
+      "id": 18
     }
   ],
   "products": [

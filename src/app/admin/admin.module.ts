@@ -13,6 +13,7 @@ import { DashboardComponent } from './components/menu/dashboard/dashboard.compon
 import { AdminUsersService } from './services/admin-users.service';
 import { AdminProductsService } from './services/admin-products.service';
 import { CategoriesService } from '../shared/services/categories.service';
+import { PasswordDialogComponent } from './components/users/password-dialog/password-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CategoriesService } from '../shared/services/categories.service';
     ProductDialogComponent,
     UserDialogComponent,
     DashboardComponent,
+    PasswordDialogComponent,
   ],
   imports: [
     CommonModule,

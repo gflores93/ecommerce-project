@@ -78,6 +78,9 @@
                 row.visible ? 'visibility' : 'visibility_off'
               }}</mat-icon>
             </button>
+            <button mat-icon-button color="warn" (click)="changePassword(row)">
+              <mat-icon>password</mat-icon>
+            </button>
             <button mat-icon-button color="secondary" (click)="editUser(row)">
               <mat-icon>edit</mat-icon>
             </button>

@@ -4,6 +4,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AdminUsersService } from '../../../services/admin-users.service';
+import { PasswordDialogComponent } from '../password-dialog/password-dialog.component';
 import { UserDialogComponent } from '../user-dialog/user-dialog.component';
 
 @Component({
@@ -116,6 +117,20 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
         alert('Error while deleting user');
       }
     });
+  }
+
+  changePassword(row: any) {
+    this.dialog
+      .open(PasswordDialogComponent, {
+        width: '30%',
+        data: row
+      })
+      .afterClosed()
+      .subscribe((val) => {
+        if (val === 'change') {
+          this.getAllUsers();
+        }
+      });
   }
 
   togglePass(row: any) {
