@@ -1,50 +1,48 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, shareReplay } from 'rxjs/operators';
-import { ProductInterface } from 'src/app/shared/models/product.interface';
+import { CategoryInterface } from 'src/app/shared/models/category.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminProductsService {
-  // apiUrl: string = 'https://fakestoreapi.com/products';
-  apiUrl: string = environment.productsUrl;
+export class AdminCategoriesService {
+  apiUrl: string = environment.categoriesUrl;
 
   constructor(private http: HttpClient) {}
 
-  getProducts() {
-    return this.http.get<ProductInterface[]>(this.apiUrl);
+  getCategories() {
+    return this.http.get<CategoryInterface[]>(this.apiUrl);
   }
 
-  postProduct(data: ProductInterface) {
+  postCategory(data: CategoryInterface) {
     return this.http.post<any>(this.apiUrl, data);
   }
 
-  putProduct(data: ProductInterface, id: number) {
+  putCategory(data: CategoryInterface, id: number) {
     return this.http.put<any>(this.apiUrl + id, data);
   }
 
-  deleteProduct(id: number) {
+  deleteCategory(id: number) {
     return this.http.delete<any>(this.apiUrl + id);
   }
 
   // /posts?_page=7&_limit=20
   // /posts?_sort=views&_order=asc
   // /posts?title_like=server
-  // products?_expand=category
-  getPaginatedProducts(
+
+  getPaginatedCategories(
     currentPage: number = 1,
     pageSize: number = 5,
     header: string = 'id',
     direction: string = 'asc',
     filterText: string = ''
   ) {
-    const filter = filterText.length ? '&title_like=' + filterText : '';
+    const filter = filterText.length ? '&name_like=' + filterText : '';
     // {observe: 'response'} as argument helps to provide extra info as res.headers('X-Total-Count')
-    return this.http.get<ProductInterface[]>(
+    return this.http.get<CategoryInterface[]>(
       this.apiUrl +
-        `?_expand=category&_page=${currentPage}&_limit=${pageSize}&_sort=${header}&_order=${direction}${filter}`,
+        `?_page=${currentPage}&_limit=${pageSize}&_sort=${header}&_order=${direction}${filter}`,
       {
         observe: 'response'
       }

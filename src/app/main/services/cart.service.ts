@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { ProductInterface } from '../../shared/models/product.interface';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CartService {
   public cartItemList: any = [];
@@ -12,7 +12,7 @@ export class CartService {
 
   public alert: any = {
     msg: '',
-    type: 0,
+    type: 0
   };
 
   constructor() {}
@@ -41,7 +41,7 @@ export class CartService {
 
   getTotalPrice(): number {
     let grandTotal = this.cartItemList.reduce(
-      (partialSum: number, a: ProductInterface) => partialSum + a.total,
+      (partialSum: number, a: ProductInterface) => partialSum + a?.total,
       0
     );
     return Math.round(grandTotal * 100) / 100;
@@ -49,9 +49,7 @@ export class CartService {
 
   // Whenever the data is modified .next() is executed to emit the updated list to the subscribers
   removeCartItem(product: ProductInterface) {
-    this.cartItemList = this.cartItemList.filter(
-      (a: ProductInterface) => a.id != product.id
-    );
+    this.cartItemList = this.cartItemList.filter((a: ProductInterface) => a.id != product.id);
     this.productList.next(this.cartItemList);
   }
 

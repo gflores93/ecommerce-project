@@ -10,7 +10,7 @@ import { CategoryInterface } from 'src/app/shared/models/category.interface';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
+  styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   categories: Array<any> = [];
@@ -55,17 +55,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.alert = undefined;
   }
 
-  filterByCategory(id: number = 1) {
+  filterByCategory(categoryId: number = 1) {
     // this.categoryList = this.productList.filter(
     //   (a: any) => a.category === category || category === ''
     // );
-
-    const category = this.categories.find((a) => a.id === id).category || '';
-    console.log('id category', id, category);
     this.searchService.updateText('');
     if (this.productsSubscription) this.productsSubscription.unsubscribe();
     this.loading = true;
-    this.productsSubscription = this.api.getProducts(category).subscribe({
+    this.productsSubscription = this.api.getProducts(categoryId).subscribe({
       next: (res) => {
         if (res.length) {
           this.productsList = res;
@@ -78,7 +75,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       },
       complete: () => {
         this.loading = false;
-      },
+      }
     });
   }
 }

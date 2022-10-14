@@ -102,12 +102,11 @@
   "products": [
     {
       "title": "Producto 12345",
-      "category": "prueba",
-      "price": 991.5,
       "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+      "categoryId": 2,
+      "price": 992.5,
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "id": 1,
-      "categoryId": 1
+      "id": 1
     },
     {
       "id": 2,
@@ -136,26 +135,20 @@
       "categoryId": 2
     },
     {
-      "id": 4,
       "title": "Mens Casual Slim Fit",
-      "price": 15.99,
       "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
-      "category": "fashion",
-      "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-      "rating": {
-        "rate": 2.1,
-        "count": 430
-      },
-      "categoryId": 5
+      "categoryId": 2,
+      "price": 15.99,
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "id": 4
     },
     {
       "title": "Someproduct09",
-      "category": "jewelery",
-      "price": 695,
       "description": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+      "categoryId": 6,
+      "price": 695,
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "id": 5,
-      "categoryId": 4
+      "id": 5
     },
     {
       "id": 6,
@@ -366,65 +359,57 @@
       "categoryId": 1
     },
     {
-      "title": "Sofa 923N",
-      "category": "furniture",
-      "price": 1608.99,
-      "description": "New sofa ",
-      "image": "https://images.pexels.com/photos/133919/pexels-photo-133919.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "id": 25,
-      "categoryId": 6
+      "title": "Producto prueba002",
+      "description": "Some text describing the product...",
+      "categoryId": 5,
+      "price": 472.9,
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "id": 22
     },
     {
-      "title": "Desktop 092",
-      "category": "furniture",
-      "price": 279.4,
-      "description": "Brand new desktop",
+      "title": "AnotherproductX",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "categoryId": 3,
+      "price": 43.99,
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "id": 26,
-      "categoryId": 6
+      "id": 23
     }
   ],
   "categories": [
     {
       "name": "All products",
-      "description": "",
-      "imgUrl": "https://images.pexels.com/photos/1517355/pexels-photo-1517355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "category": "",
+      "description": "All products available",
+      "imgUrl": "https://images.pexels.com/photos/2260838/pexels-photo-2260838.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "id": 1
     },
     {
       "name": "Fashion",
-      "description": "Helmets, Shoulder pads, Faceguards",
-      "imgUrl": "https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "category": "fashion",
+      "description": "T-shirts, Pants, Jackets, and more...",
+      "imgUrl": "https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "id": 2
     },
     {
       "name": "Jewelry",
       "description": "Protective gear, Jaw Pads, Mouseguards Back Plates, Visors, Pads, Bags,",
       "imgUrl": "https://images.pexels.com/photos/10475792/pexels-photo-10475792.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "category": "jewelery",
       "id": 3
     },
     {
       "name": "Electronics",
       "description": "Jerseys, Pants, Cleats, Gloves, Vests, Belts",
       "imgUrl": "https://images.pexels.com/photos/8346914/pexels-photo-8346914.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "category": "electronics",
       "id": 4
     },
     {
       "name": "Furniture",
       "description": "Beds, Chairs and Seating, Desks, Tables, Cabinets",
       "imgUrl": "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "category": "furniture",
       "id": 5
     },
     {
-      "name": "Prueba",
-      "description": "Categoria de prueba",
+      "name": "Test",
+      "description": "Testing category",
       "imgUrl": "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-      "category": "prueba",
       "id": 6
     }
   ]

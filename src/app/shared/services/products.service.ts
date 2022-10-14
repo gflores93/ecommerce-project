@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { ProductInterface } from '../models/product.interface';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ProductsService {
   // apiUrl: string = 'https://fakestoreapi.com/products';
@@ -36,9 +36,9 @@ export class ProductsService {
   //   );
   // }
 
-  getProducts(category: string = '') {
+  getProducts(categoryId: number = 1) {
     return this.http.get<ProductInterface[]>(
-      category.length ? this.apiUrl + '?category=' + category : this.apiUrl
+      categoryId > 0 ? this.apiUrl + '?categoryId=' + categoryId : this.apiUrl
     );
   }
 

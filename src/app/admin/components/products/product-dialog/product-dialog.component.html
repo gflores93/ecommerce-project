@@ -14,23 +14,16 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Product Category</mat-label>
-      <mat-select formControlName="category" placeholder="Category">
-        <mat-option
-          *ngFor="let category of categories"
-          value="{{ category.category }}"
-          >{{ category.name }}</mat-option
-        >
+      <mat-select formControlName="categoryId" placeholder="Category">
+        <mat-option *ngFor="let category of categories" [value]="category.id">{{
+          category.name
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Price</mat-label>
-      <input
-        formControlName="price"
-        matInput
-        type="number"
-        placeholder="Price"
-      />
+      <input formControlName="price" matInput type="number" placeholder="Price" />
     </mat-form-field>
 
     <mat-form-field appearance="outline">

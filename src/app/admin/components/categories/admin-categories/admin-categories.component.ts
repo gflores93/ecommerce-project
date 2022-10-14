@@ -1,18 +1,17 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProductInterface } from 'src/app/shared/models/product.interface';
-import { AdminProductsService } from '../../../services/admin-products.service';
-import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
+import { AdminCategoriesService } from 'src/app/admin/services/admin-categories.service';
+import { CategoryDialogComponent } from '../category-dialog/category-dialog.component';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './admin-products.component.html',
-  styleUrls: ['./admin-products.component.scss']
+  selector: 'app-admin-categories',
+  templateUrl: './admin-categories.component.html',
+  styleUrls: ['./admin-categories.component.scss']
 })
-export class AdminProductsComponent implements OnInit, AfterViewInit {
+export class AdminCategoriesComponent implements OnInit {
   isLoading = false;
   totalRows = 0;
   pageSize = 5;
@@ -24,13 +23,13 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
   filterText: string = '';
 
   /* title, price, description, category */
-  displayedColumns: string[] = ['title', 'category', 'description', 'price', 'action'];
+  displayedColumns: string[] = ['name', 'description', 'action'];
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog: MatDialog, private api: AdminProductsService) {}
+  constructor(private dialog: MatDialog, private api: AdminCategoriesService) {}
 
   /**
    * Set the paginator after the view init since this component will
@@ -48,26 +47,26 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
   // }
 
   ngOnInit(): void {
-    this.getAllProducts();
+    this.getAllCategories();
   }
 
   openDialog() {
     this.dialog
-      .open(ProductDialogComponent, {
+      .open(CategoryDialogComponent, {
         width: '30%'
       })
       .afterClosed()
       .subscribe((val) => {
         if (val === 'save') {
-          this.getAllProducts();
+          this.getAllCategories();
         }
       });
   }
 
-  getAllProducts() {
+  getAllCategories() {
     this.isLoading = true;
     this.api
-      .getPaginatedProducts(
+      .getPaginatedCategories(
         this.currentPage + 1,
         this.pageSize,
         this.header,
@@ -77,6 +76,7 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (res) => {
           this.dataSource.data = res.body || [];
+          console.log(this.dataSource.data);
           setTimeout(() => {
             this.paginator.pageIndex = this.currentPage;
             this.paginator.length = res.headers.get('X-Total-Count'); // total rows in the table (required for pagination)
@@ -90,25 +90,28 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
       });
   }
 
-  editProduct(row: ProductInterface) {
+  editCategory(row: any) {
     this.dialog
-      .open(ProductDialogComponent, {
+      .open(CategoryDialogComponent, {
         width: '30%',
         data: row
       })
       .afterClosed()
       .subscribe((val) => {
         if (val === 'update') {
-          this.getAllProducts();
+          this.getAllCategories();
         }
       });
   }
 
-  deleteProduct(id: number) {
-    this.api.deleteProduct(id).subscribe({
+  deleteCategory(id: number) {
+    this.api.deleteCategory(id).subscribe({
       next: (res) => {
         alert('Product was deleted sucessfully');
-        this.getAllProducts();
+        this.getAllCategories();
+        if (this.dataSource.paginator) {
+          this.dataSource.paginator.firstPage();
+        }
       },
       error: (err) => {
         alert('Error while deleting product');
@@ -120,7 +123,7 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
     const filterValue = (event.target as HTMLInputElement).value;
     // this.dataSource.filter = filterValue.trim().toLowerCase();
     this.filterText = filterValue.trim().toLowerCase();
-    this.getAllProducts();
+    this.getAllCategories();
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -129,12 +132,12 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
   pageChanged(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.currentPage = event.pageIndex;
-    this.getAllProducts();
+    this.getAllCategories();
   }
 
   sortData(sort: Sort) {
     this.header = sort.active;
     this.direction = sort.direction;
-    this.getAllProducts();
+    this.getAllCategories();
   }
 }
