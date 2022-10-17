@@ -5,30 +5,21 @@ import { AdminUsersService } from 'src/app/admin/services/admin-users.service';
 import { ProductInterface } from 'src/app/shared/models/product.interface';
 import { UserInterface } from 'src/app/shared/models/user.interface';
 
+import {
+  Chart,
+  ChartConfiguration,
+  ChartItem,
+  registerables
+} from 'node_modules/chart.js';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
   users?: UserInterface[];
   products?: ProductInterface[];
-
-  //Demo data slider
-  data = [
-    {
-      img: 'https://therichpost.com/wp-content/uploads/2021/05/bootstrap5-carousel-slider-img1.jpg',
-      title: 'Slide 1',
-    },
-    {
-      img: 'https://therichpost.com/wp-content/uploads/2021/05/bootstrap5-carousel-slider-img2.jpg',
-      title: 'Slide 2',
-    },
-    {
-      img: 'https://therichpost.com/wp-content/uploads/2021/05/bootstrap5-carousel-slider-img3.jpg',
-      title: 'Slide 3',
-    },
-  ];
 
   constructor(
     private productsService: AdminProductsService,
@@ -36,8 +27,57 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Chart data
+    this.createChart();
+
     this.getAllUsers();
     this.getAllProducts();
+  }
+
+  createChart(): void {
+    Chart.register(...registerables);
+    const data = {
+      labels: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+      ],
+      datasets: [
+        {
+          label: 'Profile Visit',
+          backgroundColor: 'rgb(29, 63, 129)',
+          borderColor: 'rgb(29, 63, 129)',
+          data: [10, 5, 2, 20, 30, 45, 10, 5, 12, 20, 30, 45, 12, 24]
+        }
+      ]
+    };
+    const options = {
+      scales: {
+        y: {
+          beginAtZero: true,
+          display: false
+        }
+      }
+    };
+    const config: ChartConfiguration = {
+      type: 'bar',
+      data: data,
+      options: options
+    };
+
+    const chartItem: ChartItem = document.getElementById(
+      'my-chart'
+    ) as ChartItem;
+    new Chart(chartItem, config);
   }
 
   getAllUsers() {
@@ -47,7 +87,7 @@ export class DashboardComponent implements OnInit {
       },
       error: (err) => {
         alert('Error while fetching the users!');
-      },
+      }
     });
   }
 
@@ -58,7 +98,7 @@ export class DashboardComponent implements OnInit {
       },
       error: (err) => {
         alert('Error while fetching the products!');
-      },
+      }
     });
   }
 }

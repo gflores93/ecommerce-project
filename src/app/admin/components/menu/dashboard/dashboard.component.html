@@ -1,66 +1,156 @@
-<div class="container">
-  <div class="row mt-4">
-    <div class="col">
-      <div
-        id="carouselExampleIndicators"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div class="carousel-inner">
-          <!-- ngfor loop using get dynamic value and ngclass for add acive class -->
-          <div
-            class="carousel-item"
-            *ngFor="let result of data; let i = index"
-            [ngClass]="{ active: i === 1 }"
-          >
-            <img src="{{ result.img }}" title="{{ result.title }}" />
+<div class="container text-center">
+  <div class="row">
+    <div class="col fs-4 text-start my-4">Profile Statistics</div>
+  </div>
+  <!-- Row 1 -->
+  <div class="row">
+    <!-- Col 1 -->
+    <div class="col-2">
+      <div class="card mb-3 border-1">
+        <div class="row g-0">
+          <div class="col-md-4 my-auto">
+            <i class="bi bi-eye-fill fs-2"></i>
+          </div>
+          <div class="col-md-8 my-auto">
+            <div class="card-body">
+              <h6 class="card-title">Profile Views</h6>
+              <p class="card-text">112.000</p>
+            </div>
           </div>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+      </div>
+    </div>
+    <!-- Col 2 -->
+    <div class="col-2">
+      <div class="card mb-3 border-1">
+        <div class="row g-0">
+          <div class="col-md-4 my-auto">
+            <i class="bi bi-person-square fs-2"></i>
+          </div>
+          <div class="col-md-8 my-auto">
+            <div class="card-body">
+              <h6 class="card-title">Followers</h6>
+              <p class="card-text">183.000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Col 3 -->
+    <div class="col-2">
+      <div class="card mb-3 border-1">
+        <div class="row g-0">
+          <div class="col-md-4 my-auto">
+            <i class="bi bi-person-plus-fill fs-2"></i>
+          </div>
+          <div class="col-md-8 my-auto">
+            <div class="card-body">
+              <h6 class="card-title">Following</h6>
+              <p class="card-text">80.000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Col 4 -->
+    <div class="col-2">
+      <div class="card mb-3 border-1">
+        <div class="row g-0">
+          <div class="col-md-4 my-auto">
+            <i class="bi bi-save2-fill fs-2"></i>
+          </div>
+          <div class="col-md-8 my-auto">
+            <div class="card-body">
+              <h6 class="card-title">Saved Post</h6>
+              <p class="card-text">112</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Col 5 -->
+    <div class="col-3 ms-auto">
+      <div class="card mb-3 border-1">
+        <div class="row g-0 justify-content-md-center">
+          <div class="col-md-2 my-auto">
+            <i class="bi bi-person-circle fs-2"></i>
+          </div>
+          <div class="col-md-6 my-auto">
+            <div class="card-body">
+              <h6 class="card-title">John Duck</h6>
+              <p class="card-text text-muted">@johnducky</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <hr />
-  <div class="row mt-2">
-    <div class="col-6">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img
-          mat-card-image
-          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-          alt="Photo of a Shiba Inu"
-        />
-        <mat-card-content>
-          <p>Total users: {{ users?.length || 0 }}</p>
-          <p>Total products: {{ products?.length || 0 }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>Button 1</button>
-          <button mat-button>Button 2</button>
-        </mat-card-actions>
-      </mat-card>
+
+  <!-- Row 2 -->
+  <div class="row">
+    <!-- Col 1 -->
+    <div class="col-8">
+      <div class="chart-container">
+        <canvas id="my-chart"> </canvas>
+      </div>
     </div>
-    <div class="col-6"><h2>Information</h2></div>
+    <!-- Col 2 -->
+    <div class="col-3 ms-auto">
+      <div class="card mb-3 border-1">
+        <div class="row">
+          <div class="col-6 my-2 offset-2">
+            <h6>Recent Messages</h6>
+          </div>
+        </div>
+        <div class="row g-0 justify-content-md-center">
+          <div class="col-md-2 my-auto">
+            <i class="bi bi-person-circle fs-2"></i>
+          </div>
+          <div class="col-md-6 my-auto">
+            <div class="card-body">
+              <h6 class="card-title">Hank Schrader</h6>
+              <p class="card-text text-muted">@johnducky</p>
+            </div>
+          </div>
+        </div>
+        <div class="row g-0 justify-content-md-center">
+          <div class="col-md-2 my-auto">
+            <i class="bi bi-person-circle fs-2"></i>
+          </div>
+          <div class="col-md-6 my-auto">
+            <div class="card-body">
+              <h6 class="card-title">Dean Winchester</h6>
+              <p class="card-text text-muted">@imdean</p>
+            </div>
+          </div>
+        </div>
+        <div class="row g-0 justify-content-md-center">
+          <div class="col-md-2 my-auto">
+            <i class="bi bi-person-circle fs-2"></i>
+          </div>
+          <div class="col-md-6 my-auto">
+            <div class="card-body">
+              <h6 class="card-title">John Dodol</h6>
+              <p class="card-text text-muted">@dodoljohn</p>
+            </div>
+          </div>
+        </div>
+        <div class="row g-0 justify-content-md-center">
+          <div class="col my-auto mb-3">
+            <button class="btn btn-secondary">Start Conversation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3 -->
+  <div class="row my-2">
+    <!-- Col 1 -->
+    <div class="col-3">Profile Visit</div>
+    <!-- Col 2 -->
+    <div class="col-5">Latest Purchases</div>
+    <!-- Col 3 -->
+    <div class="col-3 ms-auto">Visitors Profile</div>
   </div>
 </div>
