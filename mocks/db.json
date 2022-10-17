@@ -3,7 +3,7 @@
     {
       "username": "user04",
       "email": "04@hotmail.com",
-      "password": "12345",
+      "password": "123456x",
       "role": "Test",
       "id": 2
     },
@@ -407,10 +407,16 @@
       "id": 5
     },
     {
-      "name": "Test",
+      "name": "Test1234",
       "description": "Testing category",
       "imgUrl": "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "id": 6
+    },
+    {
+      "name": "Test1e",
+      "description": "x",
+      "imgUrl": "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "id": 7
     }
   ]
 }

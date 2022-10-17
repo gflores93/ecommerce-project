@@ -24,13 +24,7 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
   filterText: string = '';
 
   /* username, email, password, role */
-  displayedColumns: string[] = [
-    'username',
-    'role',
-    'email',
-    'password',
-    'action'
-  ];
+  displayedColumns: string[] = ['username', 'role', 'email', 'action'];
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

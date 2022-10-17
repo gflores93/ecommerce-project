@@ -1,5 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  AbstractControl,
+  ValidatorFn,
+  ValidationErrors
+} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CategoryInterface } from 'src/app/shared/models/category.interface';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
@@ -14,6 +21,9 @@ export class CategoryDialogComponent implements OnInit {
   categoryForm!: FormGroup;
   actionBtn: string = 'Save';
   categories: CategoryInterface[] = [];
+  validCategory: boolean = true;
+  categoryName?: AbstractControl;
+  newCategory: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,13 +41,17 @@ export class CategoryDialogComponent implements OnInit {
       });
 
     /*  name, description   */
-    this.categoryForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      imgUrl: [
-        'https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-      ] // TODO modify the img
-    });
+    this.categoryForm = this.formBuilder.group(
+      {
+        name: ['', Validators.required],
+        description: ['', Validators.required],
+        imgUrl: [
+          'https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+        ] // TODO modify the img
+      },
+      { validators: this.validateCategory }
+    );
+    this.categoryName = this.categoryForm.controls['name'];
 
     if (this.editData) {
       this.actionBtn = 'Update';
@@ -86,6 +100,7 @@ export class CategoryDialogComponent implements OnInit {
   }
 
   checkCategory(id: number = 0): boolean {
+    this.newCategory = this.categoryForm.value.name;
     const categoryName = this.categoryForm.value.name.toLowerCase();
     console.log(categoryName, id);
     const existingCategory = this.categories.find(
@@ -93,10 +108,17 @@ export class CategoryDialogComponent implements OnInit {
     );
     const alreadyExists = existingCategory?.name.toLowerCase() === categoryName;
     if (alreadyExists && existingCategory?.id !== id) {
+      this.validCategory = false;
       this.categoryForm.controls['name'].setValue(id ? this.editData.name : '');
-      alert('This category already exists');
       return true;
     }
     return false;
   }
+
+  validateCategory: ValidatorFn = (
+    group: AbstractControl
+  ): ValidationErrors | null => {
+    if (group.value.name?.length) this.validCategory = true;
+    return this.validCategory ? null : { alreadyExists: true };
+  };
 }

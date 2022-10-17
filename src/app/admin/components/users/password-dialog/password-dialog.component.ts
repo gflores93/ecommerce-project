@@ -21,12 +21,15 @@ export class PasswordDialogComponent implements OnInit {
 
   userForm!: FormGroup;
   actionBtn: string = 'Change';
-  hide: boolean = false;
-  hideNewPass: boolean = false;
-  hideConfirmPass: boolean = false;
+  show: boolean = false;
+  showNewPass: boolean = false;
+  showConfirmPass: boolean = false;
 
+  password?: AbstractControl;
   newPassword?: AbstractControl;
   confirmPassword?: AbstractControl;
+
+  validPass: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,9 +50,10 @@ export class PasswordDialogComponent implements OnInit {
         newPassword: ['', [Validators.required, Validators.minLength(5)]],
         confirmPassword: ['', [Validators.required, Validators.minLength(5)]]
       },
-      { validators: this.checkPasswords }
+      { validators: [this.checkPasswords, this.checkCurrentPass] }
     );
 
+    this.password = this.userForm.controls['password'];
     this.newPassword = this.userForm.controls['newPassword'];
     this.confirmPassword = this.userForm.controls['confirmPassword'];
 
@@ -70,6 +74,7 @@ export class PasswordDialogComponent implements OnInit {
             a.password === this.userForm.value.password
         );
         if (user) {
+          this.validPass = true;
           // Update the password
           this.userForm.value.password = this.userForm.value.newPassword;
           // Create a copy and remove uncessary properties before updating user
@@ -89,7 +94,7 @@ export class PasswordDialogComponent implements OnInit {
             }
           });
         } else {
-          alert('Incorrect password');
+          this.validPass = false;
           this.userForm.controls['password'].setValue('');
           this.userForm.controls['newPassword'].setValue('');
           this.userForm.controls['confirmPassword'].setValue('');
@@ -107,5 +112,12 @@ export class PasswordDialogComponent implements OnInit {
     let pass = group.value.newPassword;
     let confirmPass = group.value.confirmPassword;
     return pass === confirmPass ? null : { notSame: true };
+  };
+
+  checkCurrentPass: ValidatorFn = (
+    group: AbstractControl
+  ): ValidationErrors | null => {
+    if (group.value.password?.length) this.validPass = true;
+    return this.validPass ? null : { incorrectPass: true };
   };
 }

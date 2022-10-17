@@ -6,10 +6,20 @@
       <input formControlName="name" matInput placeholder="Name" />
     </mat-form-field>
     <div
-      *ngIf="categoryForm.hasError('required', 'name') && categoryForm?.touched"
+      *ngIf="
+        categoryForm.hasError('required', 'name') &&
+        categoryForm?.touched &&
+        !categoryForm.hasError('alreadyExists')
+      "
       class="alert alert-danger"
     >
       Category is required.
+    </div>
+    <div
+      *ngIf="categoryForm.hasError('alreadyExists') && categoryName?.touched"
+      class="alert alert-danger"
+    >
+      Category {{ newCategory }} already exists
     </div>
 
     <mat-form-field appearance="outline">

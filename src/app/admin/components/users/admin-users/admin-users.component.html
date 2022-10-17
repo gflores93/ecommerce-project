@@ -58,7 +58,7 @@
         </ng-container>
 
         <!-- Password -->
-        <ng-container matColumnDef="password">
+        <!-- <ng-container matColumnDef="password">
           <th mat-header-cell *matHeaderCellDef>Password</th>
           <td
             mat-cell
@@ -67,17 +67,17 @@
           >
             {{ row.visible ? row.password : hiddenPassword }}
           </td>
-        </ng-container>
+        </ng-container> -->
 
         <!-- Action -->
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef>Action</th>
           <td mat-cell *matCellDef="let row">
-            <button mat-icon-button (click)="togglePass(row)">
+            <!-- <button mat-icon-button (click)="togglePass(row)">
               <mat-icon>{{
                 row.visible ? 'visibility' : 'visibility_off'
               }}</mat-icon>
-            </button>
+            </button> -->
             <button mat-icon-button color="warn" (click)="changePassword(row)">
               <mat-icon>password</mat-icon>
             </button>
