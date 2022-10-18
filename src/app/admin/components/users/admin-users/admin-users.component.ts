@@ -17,7 +17,7 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
   totalRows = 0;
   pageSize = 5;
   currentPage = 0;
-  pageSizeOptions: number[] = [5, 10, 20];
+  pageSizeOptions: number[] = [5, 10, 25];
 
   header: string = 'id';
   direction: string = 'asc';

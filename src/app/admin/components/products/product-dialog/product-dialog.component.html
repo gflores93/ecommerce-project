@@ -23,13 +23,19 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Price</mat-label>
-      <input formControlName="price" matInput type="number" placeholder="Price" />
+      <input
+        formControlName="price"
+        matInput
+        type="number"
+        placeholder="Price"
+      />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
       <textarea formControlName="description" matInput></textarea>
     </mat-form-field>
+    <mat-checkbox formControlName="active" color="warn">Active</mat-checkbox>
   </form>
 </div>
 <div mat-dialog-action [align]="'end'">

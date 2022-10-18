@@ -45,6 +45,7 @@ export class CategoryDialogComponent implements OnInit {
       {
         name: ['', Validators.required],
         description: ['', Validators.required],
+        active: [true],
         imgUrl: [
           'https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
         ] // TODO modify the img
@@ -59,6 +60,7 @@ export class CategoryDialogComponent implements OnInit {
       this.categoryForm.controls['description'].setValue(
         this.editData.description
       );
+      this.categoryForm.controls['active'].setValue(this.editData.active);
       this.categoryForm.controls['imgUrl'].setValue(this.editData.imgUrl);
     }
   }

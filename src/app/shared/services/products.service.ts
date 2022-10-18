@@ -37,8 +37,9 @@ export class ProductsService {
   // }
 
   getProducts(categoryId: number = 1) {
+    const api = this.apiUrl + '?active=true';
     return this.http.get<ProductInterface[]>(
-      categoryId > 0 ? this.apiUrl + '?categoryId=' + categoryId : this.apiUrl
+      categoryId > 1 ? api + '&categoryId=' + categoryId : api
     );
   }
 

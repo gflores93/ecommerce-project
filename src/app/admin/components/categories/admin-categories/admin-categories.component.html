@@ -1,26 +1,50 @@
 <mat-toolbar color="secondary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
     <!-- angularwiki mat-icon -->
     <mat-icon>supervised_user_circle</mat-icon>
   </button>
   <span>Admin - Categories</span>
   <span class="example-spacer"></span>
-  <button mat-raised-button color="warn" (click)="openDialog()">Add category</button>
+  <button mat-raised-button color="warn" (click)="openDialog()">
+    Add category
+  </button>
 </mat-toolbar>
 
 <div>
   <div style="margin: 0 10px">
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
-      <input matInput (keyup.enter)="applyFilter($event)" placeholder="Ex. category" #input />
+      <input
+        matInput
+        (keyup.enter)="applyFilter($event)"
+        placeholder="Ex. category"
+        #input
+      />
     </mat-form-field>
 
     <div class="mat-elevation-z8">
-      <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
-      <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+      <mat-progress-bar
+        mode="indeterminate"
+        *ngIf="isLoading"
+      ></mat-progress-bar>
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="sortData($event)"
+      >
         <!-- Name -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="width: 20%"
+          >
             Category name
           </th>
           <td mat-cell *matCellDef="let row">{{ row.name }}</td>
@@ -28,9 +52,31 @@
 
         <!-- Description -->
         <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 50%">Description</th>
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="width: 50%"
+          >
+            Description
+          </th>
           <td mat-cell *matCellDef="let row">
             {{ row.description }}
+          </td>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="active">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="width: 20%"
+          >
+            Status
+          </th>
+          <td mat-cell *matCellDef="let row">
+            {{ row.active ? 'Active' : 'Inactive' }}
           </td>
         </ng-container>
 
@@ -38,10 +84,18 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef style="width: 10%">Action</th>
           <td mat-cell *matCellDef="let row">
-            <button mat-icon-button color="secondary" (click)="editCategory(row)">
+            <button
+              mat-icon-button
+              color="secondary"
+              (click)="editCategory(row)"
+            >
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="deleteCategory(row.id)">
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="deleteCategory(row.id)"
+            >
               <mat-icon>delete</mat-icon>
             </button>
           </td>

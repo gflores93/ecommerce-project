@@ -25,25 +25,34 @@ export class ProductDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.categoriesService.getCategories().subscribe((categories: CategoryInterface[]) => {
-      this.categories = categories;
-    });
+    this.categoriesService
+      .getCategories()
+      .subscribe((categories: CategoryInterface[]) => {
+        this.categories = categories;
+      });
 
-    /*  title, price, description, category   */
+    /*  title, description, categoryId, price, active, image   */
     this.productForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       categoryId: [1, Validators.required],
       price: ['', Validators.required],
+      active: [true],
       image: ['https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'] // TODO modify the img
     });
 
     if (this.editData) {
       this.actionBtn = 'Update';
       this.productForm.controls['title'].setValue(this.editData.title);
-      this.productForm.controls['description'].setValue(this.editData.description);
-      this.productForm.controls['categoryId'].setValue(this.editData.category.id); // obtained in the admin-products component w/ relational url
+      this.productForm.controls['description'].setValue(
+        this.editData.description
+      );
+      this.productForm.controls['categoryId'].setValue(
+        this.editData.categoryId
+      );
       this.productForm.controls['price'].setValue(this.editData.price);
+      this.productForm.controls['image'].setValue(this.editData.image);
+      this.productForm.controls['active'].setValue(this.editData.active);
     }
   }
 

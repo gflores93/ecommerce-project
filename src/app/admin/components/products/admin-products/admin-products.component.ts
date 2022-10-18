@@ -17,14 +17,21 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
   totalRows = 0;
   pageSize = 5;
   currentPage = 0;
-  pageSizeOptions: number[] = [5, 10, 20];
+  pageSizeOptions: number[] = [5, 10, 25];
 
   header: string = 'id';
   direction: string = 'asc';
   filterText: string = '';
 
   /* title, price, description, category */
-  displayedColumns: string[] = ['title', 'category', 'description', 'price', 'action'];
+  displayedColumns: string[] = [
+    'title',
+    'description',
+    'category.name',
+    'price',
+    'active',
+    'action'
+  ];
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -40,6 +47,14 @@ export class AdminProductsComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.sort.disableClear = true;
     this.dataSource.sort = this.sort;
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      switch (property) {
+        case 'category.name':
+          return item.category.name;
+        default:
+          return item[property];
+      }
+    };
   }
 
   // ngAfterViewChecked() {

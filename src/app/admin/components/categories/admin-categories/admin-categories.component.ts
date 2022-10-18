@@ -16,14 +16,14 @@ export class AdminCategoriesComponent implements OnInit {
   totalRows = 0;
   pageSize = 5;
   currentPage = 0;
-  pageSizeOptions: number[] = [5, 10, 20];
+  pageSizeOptions: number[] = [5, 10, 25];
 
   header: string = 'id';
   direction: string = 'asc';
   filterText: string = '';
 
   /* title, price, description, category */
-  displayedColumns: string[] = ['name', 'description', 'action'];
+  displayedColumns: string[] = ['name', 'description', 'active', 'action'];
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

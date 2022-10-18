@@ -36,7 +36,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.categoriesService
       .getCategories()
       .subscribe((categories: CategoryInterface[]) => {
-        this.categories = categories;
+        this.categories = categories.filter((c) => c.active);
         this.filterByCategory();
       });
 

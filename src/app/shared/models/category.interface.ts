@@ -3,4 +3,5 @@ export interface CategoryInterface {
   description: string;
   imageUrl: string;
   id: number;
+  active: boolean;
 }

@@ -8,4 +8,5 @@ export interface ProductInterface {
   title: string;
   total?: number | any;
   categoryId: number;
+  active: boolean;
 }

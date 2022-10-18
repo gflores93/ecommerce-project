@@ -23,3 +23,16 @@ table {
 th {
   width: 20%;
 }
+
+td.mat-cell,
+th.mat-header-cell {
+  text-align: justify;
+}
+
+.mat-row {
+  height: auto;
+}
+
+.mat-cell {
+  padding: 8px;
+}
