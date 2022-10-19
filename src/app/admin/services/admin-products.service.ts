@@ -14,7 +14,7 @@ export class AdminProductsService {
   constructor(private http: HttpClient) {}
 
   getProducts() {
-    return this.http.get<ProductInterface[]>(this.apiUrl);
+    return this.http.get<ProductInterface[]>(this.apiUrl + '?_expand=category');
   }
 
   postProduct(data: ProductInterface) {

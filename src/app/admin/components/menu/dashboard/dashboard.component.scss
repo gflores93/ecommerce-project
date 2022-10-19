@@ -1,9 +1,32 @@
 .chart-container {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.views {
+  max-height: 400px;
   box-shadow: 0 1px 1px 3px rgba(0, 0, 0, 0.05),
     0 1px 1px 1px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   padding: 20px;
-  // width: 840px;
-  // margin: 50px auto;
-  // height: 350px;
+}
+
+.categories {
+  max-height: 200px;
+}
+
+.comments {
+  width: 75%;
+  text-align: center;
+}
+
+.user {
+  width: 25%;
+}
+
+p.card-text {
+  font-size: 14px !important;
+  color: rgb(29, 63, 129) !important;
+  font-weight: 500;
+  margin-top: -8px;
 }

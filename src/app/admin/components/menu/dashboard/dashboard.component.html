@@ -9,12 +9,12 @@
       <div class="card mb-3 border-1">
         <div class="row g-0">
           <div class="col-md-4 my-auto">
-            <i class="bi bi-eye-fill fs-2"></i>
+            <i class="bi bi-eye fs-2"></i>
           </div>
           <div class="col-md-8 my-auto">
             <div class="card-body">
-              <h6 class="card-title">Profile Views</h6>
-              <p class="card-text">112.000</p>
+              <h6 class="card-title">Views</h6>
+              <p class="card-text">142</p>
             </div>
           </div>
         </div>
@@ -25,12 +25,12 @@
       <div class="card mb-3 border-1">
         <div class="row g-0">
           <div class="col-md-4 my-auto">
-            <i class="bi bi-person-square fs-2"></i>
+            <i class="bi bi-people-fill fs-2"></i>
           </div>
           <div class="col-md-8 my-auto">
             <div class="card-body">
-              <h6 class="card-title">Followers</h6>
-              <p class="card-text">183.000</p>
+              <h6 class="card-title">Users</h6>
+              <p class="card-text">{{ users?.length }}</p>
             </div>
           </div>
         </div>
@@ -41,12 +41,12 @@
       <div class="card mb-3 border-1">
         <div class="row g-0">
           <div class="col-md-4 my-auto">
-            <i class="bi bi-person-plus-fill fs-2"></i>
+            <i class="bi bi-shop fs-2"></i>
           </div>
           <div class="col-md-8 my-auto">
             <div class="card-body">
-              <h6 class="card-title">Following</h6>
-              <p class="card-text">80.000</p>
+              <h6 class="card-title">Products</h6>
+              <p class="card-text">{{ products?.length }}</p>
             </div>
           </div>
         </div>
@@ -57,12 +57,12 @@
       <div class="card mb-3 border-1">
         <div class="row g-0">
           <div class="col-md-4 my-auto">
-            <i class="bi bi-save2-fill fs-2"></i>
+            <i class="bi bi-bookmarks-fill fs-2"></i>
           </div>
           <div class="col-md-8 my-auto">
             <div class="card-body">
-              <h6 class="card-title">Saved Post</h6>
-              <p class="card-text">112</p>
+              <h6 class="card-title">Categories</h6>
+              <p class="card-text">{{ categories?.length }}</p>
             </div>
           </div>
         </div>
@@ -77,8 +77,8 @@
           </div>
           <div class="col-md-6 my-auto">
             <div class="card-body">
-              <h6 class="card-title">John Duck</h6>
-              <p class="card-text text-muted">@johnducky</p>
+              <h6 class="card-title">{{ user }}</h6>
+              <p class="card-text text-muted">Admin</p>
             </div>
           </div>
         </div>
@@ -87,22 +87,27 @@
   </div>
 
   <!-- Row 2 -->
-  <div class="row">
+  <div class="row mt-1 mb-4">
     <!-- Col 1 -->
     <div class="col-8">
       <div class="chart-container">
-        <canvas id="my-chart"> </canvas>
+        <canvas id="views-chart" class="views"></canvas>
       </div>
     </div>
     <!-- Col 2 -->
     <div class="col-3 ms-auto">
-      <div class="card mb-3 border-1">
-        <div class="row">
+      <div class="card mb-3 border-1 h-100 d-flex">
+        <!-- Title -->
+        <div class="row g-0">
           <div class="col-6 my-2 offset-2">
             <h6>Recent Messages</h6>
           </div>
         </div>
-        <div class="row g-0 justify-content-md-center">
+        <!-- User 1 -->
+        <div
+          class="row g-0 justify-content-md-center"
+          style="margin-top: -15px"
+        >
           <div class="col-md-2 my-auto">
             <i class="bi bi-person-circle fs-2"></i>
           </div>
@@ -113,7 +118,11 @@
             </div>
           </div>
         </div>
-        <div class="row g-0 justify-content-md-center">
+        <!-- User 2 -->
+        <div
+          class="row g-0 justify-content-md-center"
+          style="margin-top: -15px"
+        >
           <div class="col-md-2 my-auto">
             <i class="bi bi-person-circle fs-2"></i>
           </div>
@@ -124,7 +133,11 @@
             </div>
           </div>
         </div>
-        <div class="row g-0 justify-content-md-center">
+        <!-- User 3 -->
+        <div
+          class="row g-0 justify-content-md-center"
+          style="margin-top: -15px"
+        >
           <div class="col-md-2 my-auto">
             <i class="bi bi-person-circle fs-2"></i>
           </div>
@@ -135,8 +148,9 @@
             </div>
           </div>
         </div>
-        <div class="row g-0 justify-content-md-center">
-          <div class="col my-auto mb-3">
+        <!-- Button -->
+        <div class="row mt-auto mb-4 justify-content-md-center">
+          <div class="col mt-auto">
             <button class="btn btn-secondary">Start Conversation</button>
           </div>
         </div>
@@ -147,10 +161,55 @@
   <!-- Row 3 -->
   <div class="row my-2">
     <!-- Col 1 -->
-    <div class="col-3">Profile Visit</div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-header">Latests comments</div>
+        <div class="card-body">
+          <!-- Headers -->
+          <div class="row g-0">
+            <div class="col-md-2 my-auto user">User</div>
+            <div class="col-md-6 my-auto comments">Comment</div>
+          </div>
+          <hr />
+          <!-- Comment 1 -->
+          <div class="row g-0">
+            <div class="col-md-2 my-auto user">
+              <i class="bi bi-person-circle fs-2"></i>
+              <h6 class="card-title">Hank Schrader</h6>
+            </div>
+            <div class="col-md-6 my-auto comments">
+              <div class="card-body">
+                <p class="card-text text-muted">
+                  Really happy with the service. Excellent products!
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Comment 2 -->
+          <div class="row g-0">
+            <div class="col-md-2 my-auto user">
+              <i class="bi bi-person-circle fs-2"></i>
+              <h6 class="card-title">Dean Winchester</h6>
+            </div>
+            <div class="col-md-6 my-auto comments">
+              <div class="card-body">
+                <p class="card-text text-muted">
+                  With SanDisk, you get quality and integrity!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Col 2 -->
-    <div class="col-5">Latest Purchases</div>
-    <!-- Col 3 -->
-    <div class="col-3 ms-auto">Visitors Profile</div>
+    <div class="col-3 ms-auto">
+      <div class="card h-100">
+        <div class="card-header">Active products per category</div>
+        <div class="chart-container h-100">
+          <canvas id="categories-chart" class="categories"></canvas>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

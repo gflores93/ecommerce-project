@@ -1,3 +1,5 @@
+import { CategoryInterface } from './category.interface';
+
 export interface ProductInterface {
   description: string;
   id?: number;
@@ -9,4 +11,5 @@ export interface ProductInterface {
   total?: number | any;
   categoryId: number;
   active: boolean;
+  category?: CategoryInterface;
 }
