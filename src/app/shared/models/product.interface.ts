@@ -12,4 +12,5 @@ export interface ProductInterface {
   categoryId: number;
   active: boolean;
   category?: CategoryInterface;
+  isFavorite?: boolean;
 }

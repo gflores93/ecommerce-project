@@ -3,4 +3,5 @@ export const environment = {
   usersUrl: 'http://localhost:3000/users/',
   productsUrl: 'http://localhost:3000/products/',
   categoriesUrl: 'http://localhost:3000/categories/',
+  favoritesUrl: 'http://localhost:3000/favorites/'
 };

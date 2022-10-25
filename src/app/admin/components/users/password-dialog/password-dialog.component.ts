@@ -111,6 +111,10 @@ export class PasswordDialogComponent implements OnInit {
   ): ValidationErrors | null => {
     let pass = group.value.newPassword;
     let confirmPass = group.value.confirmPassword;
+    if (!this.confirmPassword?.value.length) {
+      this.confirmPassword?.markAsUntouched();
+    }
+
     return pass === confirmPass ? null : { notSame: true };
   };
 

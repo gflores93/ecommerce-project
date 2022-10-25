@@ -103,7 +103,7 @@
     {
       "title": "Producto 12345",
       "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "categoryId": 2,
+      "categoryId": 6,
       "price": 992.5,
       "active": false,
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
@@ -121,7 +121,7 @@
     {
       "title": "Mens Cotton Jacket",
       "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
-      "categoryId": 4,
+      "categoryId": 2,
       "price": 55.99,
       "active": true,
       "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
@@ -320,7 +320,7 @@
   ],
   "categories": [
     {
-      "name": "All products",
+      "name": "All Products",
       "description": "All products available",
       "active": true,
       "imgUrl": "https://images.pexels.com/photos/2260838/pexels-photo-2260838.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -357,9 +357,47 @@
     {
       "name": "Test",
       "description": "Test category",
-      "active": true,
+      "active": false,
       "imgUrl": "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       "id": 6
+    }
+  ],
+  "favorites": [
+    {
+      "id": 8,
+      "products": [
+        8,
+        11,
+        19,
+        24,
+        3,
+        7
+      ]
+    },
+    {
+      "id": 7,
+      "userId": 7,
+      "products": [
+        10,
+        2,
+        8,
+        15,
+        17,
+        12,
+        11
+      ]
+    },
+    {
+      "id": 18,
+      "userId": 18,
+      "products": [
+        7,
+        17,
+        11,
+        8,
+        16,
+        19
+      ]
     }
   ]
 }

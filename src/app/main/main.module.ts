@@ -11,9 +11,10 @@ import { UsersService } from '../shared/services/users.service';
 import { ProductsService } from '../shared/services/products.service';
 import { CategoriesService } from '../shared/services/categories.service';
 import { CartService } from './services/cart.service';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
-  declarations: [HeaderComponent, ProductsComponent, CartComponent, FilterPipe],
+  declarations: [HeaderComponent, ProductsComponent, CartComponent, FilterPipe, PaymentComponent],
   imports: [CommonModule, MainRoutingModule, HttpClientModule, FormsModule],
   exports: [HeaderComponent, ProductsComponent, CartComponent],
   providers: [UsersService, ProductsService, CategoriesService, CartService],
