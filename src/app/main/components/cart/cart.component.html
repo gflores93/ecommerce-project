@@ -123,9 +123,9 @@
           <button
             type="button"
             class="btn btn-success"
-            [routerLink]="'/payment'"
+            (click)="confirmOrder()"
           >
-            <!-- (click)="confirmOrder()" -->
+            <!-- [routerLink]="'/payment'" -->
             Pay & Confirm
           </button>
         </div>

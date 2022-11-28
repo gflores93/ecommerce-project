@@ -11,8 +11,8 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit(): void {
     render({
-      id: '#myPaypalButtons',
-      currency: 'MXN',
+      id: '#paypalButtons',
+      currency: 'EUR',
       value: '28.4',
       onApprove: (details) => {
         alert('Transaction successfull');

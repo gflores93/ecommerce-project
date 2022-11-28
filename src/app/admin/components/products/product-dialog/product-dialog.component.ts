@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CategoryInterface } from 'src/app/shared/models/category.interface';
 import { ProductInterface } from 'src/app/shared/models/product.interface';
@@ -87,4 +87,24 @@ export class ProductDialogComponent implements OnInit {
       }
     });
   }
+
+  // getFormValidationErrors() {
+    
+  //   console.log('%c ==>> Validation Errors: ', 'color: red; font-weight: bold; font-size:25px;');
+  
+  //   let totalErrors = 0;
+  
+  //   Object.keys(this.productForm.controls).forEach(key => {
+  //     const controlErrors: ValidationErrors = this.productForm.get(key).errors;
+  //     if (controlErrors != null) {
+  //        totalErrors++;
+  //        Object.keys(controlErrors).forEach(keyError => {
+  //          console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+  //         });
+  //     }
+  //   });
+  
+  //   console.log('Number of errors: ' ,totalErrors);
+  // }
+
 }
