@@ -2,50 +2,57 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { UserInterface } from 'src/app/shared/models/user.interface';
+import { Role } from 'src/app/shared/models/role';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  authUrl: string = 'http://localhost:3000/signupUsers/';
+  apiUrl: string = environment.usersUrl;
   loggedIn: boolean = false;
   userLogged: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  userRole: Role = Role.User;
 
   constructor(private http: HttpClient, private router: Router) {}
-
-  post(data: any) {
-    return this.http.post<any>(this.authUrl, data);
-  }
-
-  get() {
-    return this.http.get<any>(this.authUrl);
-  }
-
-  put(data: any, id: number) {
-    return this.http.put<any>(this.authUrl + id, data);
-  }
-
-  delete(id: number) {
-    return this.http.delete<any>(this.authUrl + id);
-  }
 
   isAuthenticated() {
     const promise = new Promise<boolean>((resolve, reject) => {
       setTimeout(() => {
+        const userLogged = JSON.parse(
+          localStorage.getItem('currentUser') || '{}'
+        );
+        if (userLogged?.username && !this.loggedIn) {
+          this.userLogged.next(userLogged.username);
+          this.userRole = userLogged.role;
+          this.loggedIn = true;
+        }
         resolve(this.loggedIn);
       }, 800);
     });
     return promise;
   }
-  login(user: any) {
+
+  login(user: UserInterface) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
     console.log('User logged in:', user);
-    this.userLogged.next(user);
+    this.userLogged.next(user.username);
+    this.userRole = user.role;
     this.loggedIn = true;
+    if (user.role === Role.Admin) {
+      this.router.navigate(['admin']);
+    } else {
+      this.router.navigate(['main/products']);
+    }
   }
+
   logout() {
+    localStorage.removeItem('currentUser');
     console.log('User logged out:');
     this.loggedIn = false;
     this.userLogged.next('');
+    this.userRole = Role.User;
     this.router.navigate(['login']);
   }
 }

@@ -1,0 +1,38 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hidetext {
+  -webkit-text-security: disc; /* Default */
+}
+
+th {
+  width: 20%;
+}
+
+td.mat-cell,
+th.mat-header-cell {
+  text-align: justify;
+}
+
+.mat-row {
+  height: auto;
+}
+
+.mat-cell {
+  padding: 8px;
+}

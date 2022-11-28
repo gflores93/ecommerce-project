@@ -3,28 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { CartComponent } from './components/cart/cart.component';
-import { ProductsComponent } from './components/products/products.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FilterPipe } from './shared/filter.pipe';
-import { FormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
+import { MainModule } from './main/main.module';
+import { AdminModule } from './admin/admin.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    CartComponent,
-    ProductsComponent,
-    FilterPipe,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
     AuthModule,
+    MainModule,
+    AdminModule,
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

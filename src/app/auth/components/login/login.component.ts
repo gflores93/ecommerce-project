@@ -6,6 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/shared/models/role';
+import { UserInterface } from 'src/app/shared/models/user.interface';
+import { UsersService } from 'src/app/shared/services/users.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -18,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private usersService: UsersService,
     private authService: AuthService,
     private router: Router
   ) {}
@@ -30,18 +34,17 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.authService.get().subscribe({
+    this.usersService.getUsers().subscribe({
       next: (res) => {
         const user = res.find(
-          (a: any) =>
+          (a: UserInterface) =>
             a.email === this.loginForm.value.email &&
             a.password === this.loginForm.value.password
         );
         if (user) {
-          console.log('Login successful');
           this.loginForm.reset();
-          this.authService.login(user?.username);
-          this.router.navigate(['products']);
+          this.authService.login(user);
+          console.log('Login successful');
         } else {
           alert('User not found');
         }

@@ -1,0 +1,79 @@
+.navbar {
+  min-width: 400px;
+  width: 100vw;
+}
+
+.navbar-brand {
+  margin: 0;
+  padding: 0;
+  width: inherit;
+}
+
+.inline {
+  width: 60vw;
+  max-width: 600px;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.input-icons {
+  i {
+    position: relative;
+    z-index: 10;
+    color: black;
+  }
+
+  i:hover {
+    color: darkred;
+  }
+}
+
+.icon {
+  padding: 10px;
+  min-width: 40px;
+  left: auto;
+  right: 50px;
+}
+
+.input-field {
+  width: 85%;
+  padding: 10px;
+  text-align: start;
+  margin-bottom: 3px;
+  border-radius: 3px;
+  border: none;
+}
+
+.btn-route {
+  color: whitesmoke;
+  background-color: transparent;
+  border: none;
+}
+
+.btn-route:hover {
+  color: black;
+}
+
+.btn-route:focus,
+.btn-route:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.user-info {
+  display: flex;
+  display: inline-block;
+  text-align: center;
+}
+
+.logout-link {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: small;
+}
+.logout-link:hover {
+  color: red;
+}

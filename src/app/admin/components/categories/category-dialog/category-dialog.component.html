@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>{{ actionBtn }} category</h1>
+<div mat-dialog-content>
+  <form [formGroup]="categoryForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Category Name</mat-label>
+      <input formControlName="name" matInput placeholder="Name" />
+    </mat-form-field>
+    <div
+      *ngIf="
+        categoryForm.hasError('required', 'name') &&
+        categoryForm?.touched &&
+        !categoryForm.hasError('alreadyExists')
+      "
+      class="alert alert-danger"
+    >
+      Category is required.
+    </div>
+    <div
+      *ngIf="categoryForm.hasError('alreadyExists') && categoryName?.touched"
+      class="alert alert-danger"
+    >
+      Category {{ newCategory }} already exists
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea formControlName="description" matInput></textarea>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="active" color="warn">Active</mat-checkbox>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button
+    style="margin-left: 8px"
+    mat-raised-button
+    color="secondary"
+    (click)="addCategory()"
+    [disabled]="categoryForm.invalid"
+  >
+    {{ actionBtn }}
+  </button>
+</div>

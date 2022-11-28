@@ -1,0 +1,60 @@
+<h1 mat-dialog-title>{{ actionBtn === 'Save' ? 'Add' : actionBtn }} user</h1>
+<div mat-dialog-content>
+  <form [formGroup]="userForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input formControlName="username" matInput placeholder="Username" />
+    </mat-form-field>
+    <div
+      *ngIf="userForm.hasError('required', 'username') && userForm?.touched"
+      class="alert alert-danger"
+    >
+      Username is required
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>User Role</mat-label>
+      <mat-select formControlName="role" placeholder="Role">
+        <mat-option *ngFor="let role of userRoles" value="{{ role }}">{{
+          role
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        type="email"
+        placeholder="Email"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="actionBtn === 'Save'">
+      <mat-label>Password</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="hide ? 'text' : 'password'"
+        placeholder="Password"
+      />
+
+      <mat-icon matSuffix (click)="hide = !hide">{{
+        hide ? 'visibility_off' : 'visibility'
+      }}</mat-icon>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button
+    style="margin-left: 8px"
+    mat-raised-button
+    color="secondary"
+    (click)="adduser()"
+    [disabled]="userForm.invalid"
+  >
+    {{ actionBtn }}
+  </button>
+</div>
